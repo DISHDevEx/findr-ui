@@ -1,6 +1,5 @@
-# Next.js & NextUI Template
-
-This is a template for creating applications using Next.js 13 (app directory) and NextUI (v2).
+# FINDR-UI
+User Interface for FINDR service
 
 ## Technologies Used
 
@@ -13,16 +12,6 @@ This is a template for creating applications using Next.js 13 (app directory) an
 - [next-themes](https://github.com/pacocoursey/next-themes)
 
 ## How to Use
-
-
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
-
 ### Install dependencies
 
 ```bash
@@ -34,7 +23,3 @@ npm install
 ```bash
 npm run dev
 ```
-
-## License
-
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).

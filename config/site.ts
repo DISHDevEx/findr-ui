@@ -1,29 +1,21 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-	name: "Next.js + NextUI",
-	description: "Make beautiful websites regardless of your design experience.",
+	name: "FINDR",
+	description: "simple-to-use unified connectivity service to observe, interact, and onboard industry-specific devices across a wide range of network & data protocols",
 	navItems: [
 		{
 			label: "Home",
 			href: "/",
 		},
     {
-      label: "Docs",
-      href: "/docs",
+      label: "Documentation",
+      href: "/documentation",
     },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
-    }
+	{
+		label: "Playground",
+		href: "/playground",
+	  },
 	],
 	navMenuItems: [
 		{
@@ -60,10 +52,8 @@ export const siteConfig = {
 		},
 	],
 	links: {
-		github: "https://github.com/nextui-org/nextui",
-		twitter: "https://twitter.com/getnextui",
-		docs: "https://nextui.org",
-		discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev"
+		github: "https://github.com/DISHDevEx/findr",
+		docs: "https://github.com/DISHDevEx/findr/wiki",
+		playground: "http://localhost:4000/graphql"
 	},
 };
