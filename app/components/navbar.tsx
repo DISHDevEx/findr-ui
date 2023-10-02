@@ -1,3 +1,4 @@
+import React from "react";
 import {
 	Navbar as NextUINavbar,
 	NavbarContent,
@@ -7,24 +8,20 @@ import {
 	NavbarItem,
 	NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-
 import { link as linkStyles } from "@nextui-org/theme";
-
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "../../config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
 
-import { ThemeSwitch } from "@/app/components/theme-switch";
+import { ThemeSwitch } from "../../app/components/theme-switch";
 import {
 	GithubIcon,
 	SearchIcon,
-} from "@/app/components/icons";
+} from "../../app/components/icons";
 
-import { Logo } from "@/app/components/icons";
+import { Logo } from "../../app/components/icons";
 
 export const Navbar = () => {
 	const searchInput = (

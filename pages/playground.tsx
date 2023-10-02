@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { title } from '@/app/components/primitives';
-import { fetchGraphQL } from '@/lib/api';
+import { title } from '../app/components/primitives';
+import { fetchGraphQL } from '../lib/api';
 
 export default function PlaygroundPage() {
   const [query, setQuery] = useState('');

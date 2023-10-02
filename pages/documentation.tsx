@@ -1,4 +1,5 @@
-import { title } from "@/app/components/primitives";
+import React from "react";
+import { title } from "../app/components/primitives";
 
 export default function DocsPage() {
 	return (
