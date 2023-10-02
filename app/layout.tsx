@@ -1,10 +1,10 @@
-import "@/styles/globals.css";
+import "../styles/globals.css";
 import React from "react";
 import { Metadata } from "next";
-import { siteConfig } from "../../../config/site";
-import { fontSans } from "../../../config/fonts";
-import { Providers } from "../../providers";
-import { Navbar } from "../../components/navbar";
+import { siteConfig } from "../config/site";
+import { fontSans } from "../config/fonts";
+import { Providers } from "./providers";
+import { Navbar } from "./navbar";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 
