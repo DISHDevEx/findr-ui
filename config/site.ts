@@ -54,6 +54,6 @@ export const siteConfig = {
 	links: {
 		github: "https://github.com/DISHDevEx/findr",
 		docs: "https://github.com/DISHDevEx/findr/wiki",
-		playground: "http://localhost:4000/graphql"
+		playground: "/playground"
 	},
 };
