@@ -1,5 +1,5 @@
 import React from "react";
-import { title } from "./primitives";
+import { title } from "../components/primitives";
 
 export default function DocsPage() {
 	return (
