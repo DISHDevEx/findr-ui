@@ -1,13 +1,10 @@
+
+
+<h1 align="center">Findr UI</h1>
 <p align="center">
-  <a href="https://m6v3l9.github.io/react-material-admin/" rel="noopener" target="_blank"><img width="120" src="https://m6v3l9.github.io/react-material-admin/logo.svg" alt="React Material Admin logo"></a></p>
+Based on React Material Admin which is a free and open-source admin application including many real-world examples. It is built on React and Material-UI.
 </p>
 
-<h1 align="center">React Material Admin</h1>
-<p align="center">
-<b>react-material-admin</b> is a free and open-source admin  application including many real-world examples. It is based on React and Material-UI.
-</p>
-
-[![react-material-admin-demo](https://cdn.dribbble.com/users/6538082/screenshots/15805144/media/5687464c7190019afb748863ac6957d3.png?compress=1&resize=1200x900)](https://m6v3l9.github.io/react-material-admin/)
 
 ## Getting Started
 
