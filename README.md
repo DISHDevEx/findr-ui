@@ -67,13 +67,6 @@ This will automatically open [http://localhost:3000](http://localhost:3000).
 | TypeScript            | TypeScript                                     | [Docs](https://create-react-app.dev/docs/adding-typescript/)                    |
 | Validation            | Yup                                            | [Docs](https://github.com/jquense/yup)                                          |
 
-## Coming Soon
-
-| Package      | Description                                 | Docs                            |
-| ------------ | ------------------------------------------- | ------------------------------- |
-| Drag & Drop  | Add Projects page with Drag & Drop features |                                 |
-| E2E Testing  | Cypress                                     | [Docs](https://www.cypress.io/) |
-| Unit Testing | Jest                                        | [Docs](https://jestjs.io/)      |
 
 ## License
 
