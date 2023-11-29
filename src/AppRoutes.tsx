@@ -37,6 +37,10 @@ const Landing = lazy(() => import("./landing/pages/Landing"));
 // Devices
 const DeviceManagement = lazy(() => import("./devices/pages/DeviceManagement"));
 
+// Devices
+const Connect = lazy(() => import("./connect/pages/DeviceRegistration"));
+
+
 const AppRoutes = () => {
   return (
     <Routes basename={process.env.PUBLIC_URL}>
@@ -44,6 +48,7 @@ const AppRoutes = () => {
       <PrivateRoute path="admin" element={<Admin />}>
         <PrivateRoute path="/" element={<Home />} />
         <PrivateRoute path="dashboard" element={<Dashboard />} />
+        <PrivateRoute path="connect" element={<Connect />} />
         <PrivateRoute path="faq" element={<Faq />} />
         <PrivateRoute path="help" element={<HelpCenter />} />
         <PrivateRoute path="profile" element={<Profile />}>
@@ -51,15 +56,6 @@ const AppRoutes = () => {
           <PrivateRoute path="information" element={<ProfileInformation />} />
           <PrivateRoute path="password" element={<ProfilePassword />} />
         </PrivateRoute>
-        <PrivateRoute
-          path="connect"
-          element={
-            <Navigate
-              to={`/${process.env.PUBLIC_URL}/under-construction`}
-              replace
-            />
-          }
-        />
         <PrivateRoute
           path="vault"
           element={
