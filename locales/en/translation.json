@@ -378,6 +378,12 @@
       "firstName": {
         "label": "Name"
       },
+      "httpField": {
+        "label": "Port Number"
+      },
+      "mqttField": {
+        "label": "Broker"
+      },
       "upConnector": {
         "label": "Destination",
         "options": {
