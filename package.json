@@ -2,8 +2,8 @@
   "name": "react-material-admin",
   "version": "0.1.0-alpha",
   "description": "Free and open-source admin application made with React",
-  "author": "m6v3l9 <m6v3l9@gmail.com>",
-  "homepage": "https://m6v3l9.github.io/react-material-admin",
+  "author": "DishDevEx <mss@gmail.com>",
+  "homepage": "https://DISHDevEx.github.io/findr-ui",
   "license": "MIT",
   "dependencies": {
     "@emotion/react": "^11.11.1",
