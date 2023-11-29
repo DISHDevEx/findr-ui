@@ -14,6 +14,7 @@ import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import React, { useState } from 'react';
 import { Device } from "../types/device";
+import PublishIcon from '@mui/icons-material/Publish';
 
 const upConnectors = [
   { label: "deviceManagement.form.upConnector.options.s", value: "S3" },
@@ -208,6 +209,14 @@ const DeviceForm = ({
           label={t("deviceManagement.form.disabled.label")}
         />
       </FormControl>
+      <Button 
+        variant="contained" 
+        endIcon={<PublishIcon />}
+        onClick={onClose}
+      > 
+        Submit
+        {t("common.cancel")}
+      </Button>
   </Box>
   );
 };

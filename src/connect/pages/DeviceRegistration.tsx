@@ -111,7 +111,7 @@ const DeviceRegistration = () => {
               variant="h2"
             >{`Connect`}</Typography>
       <Grid container spacing={1}>
-        <Grid item xs={12} md={6} marginTop={8}>
+        <Grid item xs={12} md={6} marginTop={15}>
           <Box
             sx={{
               display: "flex",
@@ -124,13 +124,13 @@ const DeviceRegistration = () => {
             <SvgContainer>
               <S3Svg />
             </SvgContainer>
-            <Typography
+            {/* <Typography
               component="div"
               variant="h3"
-            >{`S3`}</Typography>
+            >{`S3`}</Typography> */}
           </Box>
         </Grid>
-        <Grid item xs={12} md={6} marginTop={3}>
+        <Grid item xs={12} md={6} marginTop={15}>
           <Box
             sx={{
               display: "flex",
@@ -143,10 +143,10 @@ const DeviceRegistration = () => {
             <SvgContainer>
               <DynamoSvg style={{ maxWidth: 280, width: "100%" }} />
             </SvgContainer>
-            <Typography
+            {/* <Typography
               component="div"
               variant="h4"
-            >{`DynamoDB`}</Typography>
+            >{`DynamoDB`}</Typography> */}
           </Box>
         </Grid>
         <Grid item xs={12} md={12} marginTop={3}>

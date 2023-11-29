@@ -8,7 +8,7 @@ viewBox="0 0 512 512">
 <rect
 width="512" height="512"
 rx="15%"
-fill="#ffffff"/>
+fill=none/>
 
 <path fill="#919191" d="M260 348l-137 33V131l137 32z"/>
 
