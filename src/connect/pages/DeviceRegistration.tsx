@@ -1,57 +1,135 @@
-import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
-import Fab from "@material-ui/core/Fab";
 import Grid from "@material-ui/core/Grid";
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import PersonIcon from "@material-ui/icons/Person";
-import React from "react";
+import React, { useState }from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, Outlet } from "react-router-dom";
 import { useAuth } from "../../auth/contexts/AuthProvider";
 import QueryWrapper from "../../core/components/QueryWrapper";
 import { useSnackbar } from "../../core/contexts/SnackbarProvider";
 import SvgContainer from "../../core/components/SvgContainer";
-import { ReactComponent as S3Svg } from "../../connect/assets/s3.svg";
-import { ReactComponent as DynamoSvg } from "../../connect/assets/dynamodb.svg";
-
+import { ReactComponent as S3Svg } from "../assets/amazon-s3.svg";
+import { ReactComponent as DynamoSvg } from "../assets/aws-dynamodb.svg";
+import { useAddDevice } from "../hooks/useAddDevice";
+import { useDeleteDevices } from "../hooks/useDeleteDevices";
+import { useUpdateDevice } from "../hooks/useUpdateDevice";
+import { useDevices } from "../hooks/useDevices";
+import { Device } from "../types/device";
+import DeviceForm from "../components/DeviceForm";
 
 const DeviceRegistration = () => {
-  const { isLoggingOut, logout, userInfo } = useAuth();
   const snackbar = useSnackbar();
   const { t } = useTranslation();
 
-  const handleLogout = () => {
-    logout().catch(() =>
-      snackbar.error(t("common.errors.unexpected.subTitle"))
-    );
+  const [openConfirmDeleteDialog, setOpenConfirmDeleteDialog] = useState(false);
+  const [openDeviceDialog, setOpenDeviceDialog] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
+  const [deviceDeleted, setDeviceDeleted] = useState<string[]>([]);
+  const [deviceUpdated, setDeviceUpdated] = useState<Device | undefined>(undefined);
+
+  const { addDevice, isAdding } = useAddDevice();
+  const { deleteDevices, isDeleting } = useDeleteDevices();
+  const { isUpdating, updateDevice } = useUpdateDevice();
+  const { data } = useDevices();
+
+  const processing = isAdding || isDeleting || isUpdating;
+
+  const handleAddDevice = async (device: Partial<Device>) => {
+    addDevice(device as Device)
+      .then(() => {
+        snackbar.success(
+          t("DeviceManagement.notifications.addSuccess", {
+            device: `${device.firstName} ${device.lastName}`,
+          })
+        );
+        setOpenDeviceDialog(false);
+      })
+      .catch(() => {
+        snackbar.error(t("common.errors.unexpected.subTitle"));
+      });
+  };
+
+  const handleDeleteDevices = async () => {
+    deleteDevices(deviceDeleted)
+      .then(() => {
+        snackbar.success(t("DeviceManagement.notifications.deleteSuccess"));
+        setSelected([]);
+        setDeviceDeleted([]);
+        setOpenConfirmDeleteDialog(false);
+      })
+      .catch(() => {
+        snackbar.error(t("common.errors.unexpected.subTitle"));
+      });
+  };
+
+  const handleUpdateDevice = async (device: Device) => {
+    updateDevice(device)
+      .then(() => {
+        snackbar.success(
+          t("DeviceManagement.notifications.updateSuccess", {
+            device: `${device.firstName} ${device.lastName}`,
+          })
+        );
+        setOpenDeviceDialog(false);
+      })
+      .catch(() => {
+        snackbar.error(t("common.errors.unexpected.subTitle"));
+      });
+  };
+
+  const handleCancelSelected = () => {
+    setSelected([]);
+  };
+
+  const handleCloseConfirmDeleteDialog = () => {
+    setOpenConfirmDeleteDialog(false);
+  };
+
+  const handleCloseDeviceDialog = () => {
+    setDeviceUpdated(undefined);
+    setOpenDeviceDialog(false);
+  };
+
+  const handleOpenConfirmDeleteDialog = (deviceIds: string[]) => {
+    setDeviceDeleted(deviceIds);
+    setOpenConfirmDeleteDialog(true);
+  };
+
+  const handleOpenDeviceDialog = (device?: Device) => {
+    setDeviceUpdated(device);
+    setOpenDeviceDialog(true);
+  };
+
+  const handleSelectedChange = (newSelected: string[]) => {
+    setSelected(newSelected);
   };
 
   return (
     <React.Fragment>
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={6} marginTop={3}>
+      <Typography
+              component="div"
+              variant="h2"
+            >{`Connect`}</Typography>
+      <Grid container spacing={1}>
+        <Grid item xs={12} md={6} marginTop={8}>
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
-              mb: 6,
+              mb: 3,
             }}
           >
             <SvgContainer>
-              <S3Svg style={{ maxWidth: 280, width: "100%" }} />
+              <S3Svg />
             </SvgContainer>
             <Typography
               component="div"
-              variant="h4"
+              variant="h3"
             >{`S3`}</Typography>
           </Box>
         </Grid>
-        <Grid container spacing={4}>
         <Grid item xs={12} md={6} marginTop={3}>
           <Box
             sx={{
@@ -59,7 +137,7 @@ const DeviceRegistration = () => {
               flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
-              mb: 6,
+              mb: 3,
             }}
           >
             <SvgContainer>
@@ -71,20 +149,16 @@ const DeviceRegistration = () => {
             >{`DynamoDB`}</Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6} marginTop={3}>
+        <Grid item xs={12} md={12} marginTop={3}>
           <Box sx={{ mb: 4 }}>
-            <Tabs aria-label="profile nav tabs" value={false}>
-              {profileMenuItems.map((item) => (
-                <Tab
-                  key={item.key}
-                  activeClassName="Mui-selected"
-                  end={true}
-                  component={NavLink}
-                  label={t(item.key)}
-                  to={item.path}
-                />
-              ))}
-            </Tabs>
+            <DeviceForm
+            onAdd={handleAddDevice}
+            onClose={handleCloseDeviceDialog}
+            onUpdate={handleUpdateDevice}
+            open={openDeviceDialog}
+            processing={processing}
+            device={deviceUpdated}
+            />
           </Box>
           <QueryWrapper>
             <Outlet />
