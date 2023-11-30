@@ -164,10 +164,10 @@ const DeviceRow = ({
           </Avatar>
           <Box>
             <Typography component="div" variant="h6">
-              {`${device.lastName} ${device.firstName}`}
+              {`${device.deviceTemplate} ${device.firstName}`}
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              {device.macAddress}
+              {device.localPath}
             </Typography>
           </Box>
         </Box>

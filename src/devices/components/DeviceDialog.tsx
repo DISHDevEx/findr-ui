@@ -63,20 +63,20 @@ const DeviceDialog = ({
   const formik = useFormik({
     initialValues: {
       disabled: device ? device.disabled : false,
-      macAddress: device ? device.macAddress : "",
+      localFilePath: device ? device.localFilePath : "",
       firstName: device ? device.firstName : "",
       upConnector: device ? device.upConnector : "S3",
-      lastName: device ? device.lastName : "",
+      deviceTemplate: device ? device.deviceTemplate : "",
       deviceType: device ? device.deviceType : "",
     },
     validationSchema: Yup.object({
-      macAddress: Yup.string()
+      localFilePath: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
       firstName: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
-      lastName: Yup.string()
+      deviceTemplate: Yup.string()
         .max(30, t("common.validations.max", { size: 30 }))
         .required(t("common.validations.required")),
       deviceType: Yup.string().required(t("common.validations.required")),
@@ -97,16 +97,16 @@ const DeviceDialog = ({
             margin="normal"
             required
             fullWidth
-            id="lastName"
-            label={t("deviceManagement.form.lastName.label")}
-            name="lastName"
+            id="deviceTemplate"
+            label={t("deviceManagement.form.deviceTemplate.label")}
+            name="deviceTemplate"
             autoComplete="family-name"
             autoFocus
             disabled={processing}
-            value={formik.values.lastName}
+            value={formik.values.deviceTemplate}
             onChange={formik.handleChange}
-            error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-            helperText={formik.touched.lastName && formik.errors.lastName}
+            error={formik.touched.deviceTemplate && Boolean(formik.errors.deviceTemplate)}
+            helperText={formik.touched.deviceTemplate && formik.errors.deviceTemplate}
           />
           <TextField
             margin="normal"
@@ -170,15 +170,15 @@ const DeviceDialog = ({
             margin="normal"
             required
             fullWidth
-            id="macAddress"
-            label={t("deviceManagement.form.macAddress.label")}
-            name="macAddress"
-            autoComplete="macAddress"
+            id="localFilePath"
+            label={t("deviceManagement.form.localFilePath.label")}
+            name="localFilePath"
+            autoComplete="localFilePath"
             disabled={processing}
-            value={formik.values.macAddress}
+            value={formik.values.localFilePath}
             onChange={formik.handleChange}
-            error={formik.touched.macAddress && Boolean(formik.errors.macAddress)}
-            helperText={formik.touched.macAddress && formik.errors.macAddress}
+            error={formik.touched.localFilePath && Boolean(formik.errors.localFilePath)}
+            helperText={formik.touched.localFilePath && formik.errors.localFilePath}
           />
           <TextField
             margin="normal"

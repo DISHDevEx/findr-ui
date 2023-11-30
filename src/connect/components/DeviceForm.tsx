@@ -38,6 +38,11 @@ type DeviceFormProps = {
   device?: Device;
 };
 
+interface FormData {
+  option: string;
+  textValue: string;
+}
+
 const DeviceForm = ({
   onAdd,
   onClose,
@@ -47,6 +52,16 @@ const DeviceForm = ({
   device,
 }: DeviceFormProps) => {
   const { t } = useTranslation();
+
+  const [formData, setFormData] = useState<FormData>({ option: '', textValue: '' });
+
+  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, option: event.target.value, textValue: '' });
+  };
+
+  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, textValue: event.target.value });
+  };
 
   const editMode = Boolean(device && device.id);
 
@@ -61,20 +76,20 @@ const DeviceForm = ({
   const formik = useFormik({
     initialValues: {
       disabled: device ? device.disabled : false,
-      macAddress: device ? device.macAddress : "",
+      localFilePath: device ? device.localFilePath : "",
       firstName: device ? device.firstName : "",
       upConnector: device ? device.upConnector : "S3",
-      lastName: device ? device.lastName : "",
+      deviceTemplate: device ? device.deviceTemplate : "",
       deviceType: device ? device.deviceType : "",
     },
     validationSchema: Yup.object({
-      macAddress: Yup.string()
+      localFilePath: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
       firstName: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
-      lastName: Yup.string()
+      deviceTemplate: Yup.string()
         .max(30, t("common.validations.max", { size: 30 }))
         .required(t("common.validations.required")),
       deviceType: Yup.string().required(t("common.validations.required")),
@@ -96,16 +111,16 @@ const DeviceForm = ({
         margin="normal"
         required
         fullWidth
-        id="lastName"
-        label={t("deviceManagement.form.lastName.label")}
-        name="lastName"
+        id="deviceTemplate"
+        label={t("deviceManagement.form.deviceTemplate.label")}
+        name="deviceTemplate"
         autoComplete="family-name"
         autoFocus
         disabled={processing}
-        value={formik.values.lastName}
+        value={formik.values.deviceTemplate}
         onChange={formik.handleChange}
-        error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-        helperText={formik.touched.lastName && formik.errors.lastName}
+        error={formik.touched.deviceTemplate && Boolean(formik.errors.deviceTemplate)}
+        helperText={formik.touched.deviceTemplate && formik.errors.deviceTemplate}
       />
       <TextField
         margin="normal"
@@ -129,20 +144,69 @@ const DeviceForm = ({
           row
           aria-label="downConnector"
           name="downConnector"
-          value={formik.values.downConnector}
-          onChange={formik.handleChange}
+          value={formData.option}
+          onChange={handleOptionChange}
         >
-          {downConnectors.map((downConnector) => (
-            <FormControlLabel
-              key={downConnector.value}
-              disabled={processing}
-              value={downConnector.value}
-              control={<Radio />}
-              label={t(downConnector.label)}
-            />
-          ))}
+          <FormControlLabel value="HTTP" control={<Radio />} label="HTTP" />
+          <FormControlLabel value="MQTT" control={<Radio />} label="MQTT" />
         </RadioGroup>
       </FormControl>
+
+      {formData.option === 'HTTP' && (
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          label="HTTP Port Number"
+          id="httpPortNumber"
+          name="httpPortNumber"
+          value={formData.textValue}
+          onChange={handleTextChange}
+        />
+      )}
+
+      {formData.option === 'HTTP' && (
+        <TextField
+          label="HTTP Route"
+          value={formData.textValue}
+          onChange={handleTextChange}
+        />
+      )}
+
+      {formData.option === 'MQTT' && (
+        <TextField
+          label="MQTT Broker"
+          value={formData.textValue}
+          onChange={handleTextChange}
+        />
+      )}
+
+      {formData.option === 'MQTT' && (
+        <TextField
+          label="Topic"
+          value={formData.textValue}
+          onChange={handleTextChange}
+        />
+      )}
+
+      {formData.option === 'MQTT' && (
+        <TextField
+          label="Client ID"
+          value={formData.textValue}
+          onChange={handleTextChange}
+        />
+      )}
+
+    {formData.option === 'MQTT' && (
+        <TextField
+          label="Ca File Path"
+          value={formData.textValue}
+          onChange={handleTextChange}
+        />
+      )}
+
+
+
       <FormControl component="fieldset" margin="normal">
         <FormLabel component="legend">
           {t("deviceManagement.form.upConnector.label")}
@@ -169,15 +233,15 @@ const DeviceForm = ({
         margin="normal"
         required
         fullWidth
-        id="macAddress"
-        label={t("deviceManagement.form.macAddress.label")}
-        name="macAddress"
-        autoComplete="macAddress"
+        id="localFilePath"
+        label={t("deviceManagement.form.localFilePath.label")}
+        name="localFilePath"
+        autoComplete="localFilePath"
         disabled={processing}
-        value={formik.values.macAddress}
+        value={formik.values.localFilePath}
         onChange={formik.handleChange}
-        error={formik.touched.macAddress && Boolean(formik.errors.macAddress)}
-        helperText={formik.touched.macAddress && formik.errors.macAddress}
+        error={formik.touched.localFilePath && Boolean(formik.errors.localFilePath)}
+        helperText={formik.touched.localFilePath && formik.errors.localFilePath}
       />
       <TextField
         margin="normal"

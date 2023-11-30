@@ -372,8 +372,8 @@
       "disabled": {
         "label": "Disabled"
       },
-      "macAddress": {
-        "label": "Mac Address"
+      "localFilePath": {
+        "label": "Local File Path"
       },
       "firstName": {
         "label": "Name"

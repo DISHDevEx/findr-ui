@@ -49,7 +49,7 @@ export const darkPalette = {
   divider: palette.grey[600],
   background: {
     paper: palette.grey[800],
-    default: palette.grey[700],
+    default: palette.grey[600],
   },
   action: {
     selectedOpacity: 0,
