@@ -18,15 +18,15 @@ import * as Yup from "yup";
 import React, { useState } from 'react';
 import { Device } from "../types/device";
 
-const upConnectors = [
-  { label: "deviceManagement.form.upConnector.options.s", value: "S3" },
-  { label: "deviceManagement.form.upConnector.options.d", value: "Dynamo DB" },
-  { label: "deviceManagement.form.upConnector.options.b", value: "Blob Store" },
+const destinations = [
+  { label: "deviceManagement.form.destination.options.s", value: "S3" },
+  { label: "deviceManagement.form.destination.options.d", value: "Dynamo DB" },
+  { label: "deviceManagement.form.destination.options.b", value: "Blob Store" },
 ];
 
-const downConnectors = [
-  { label: "deviceManagement.form.downConnector.options.h", value: "HTTP" },
-  { label: "deviceManagement.form.downConnector.options.m", value: "MQTT" },
+const sources = [
+  { label: "deviceManagement.form.source.options.h", value: "HTTP" },
+  { label: "deviceManagement.form.source.options.m", value: "MQTT" },
 ];
 
 const deviceTypes = ["Sensor", "Camera"];
@@ -64,8 +64,8 @@ const DeviceDialog = ({
     initialValues: {
       disabled: device ? device.disabled : false,
       localFilePath: device ? device.localFilePath : "",
-      firstName: device ? device.firstName : "",
-      upConnector: device ? device.upConnector : "S3",
+      deviceName: device ? device.deviceName : "",
+      destination: device ? device.destination : "S3",
       deviceTemplate: device ? device.deviceTemplate : "",
       deviceType: device ? device.deviceType : "",
     },
@@ -73,7 +73,7 @@ const DeviceDialog = ({
       localFilePath: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
-      firstName: Yup.string()
+      deviceName: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
       deviceTemplate: Yup.string()
@@ -112,56 +112,56 @@ const DeviceDialog = ({
             margin="normal"
             required
             fullWidth
-            id="firstName"
-            label={t("deviceManagement.form.firstName.label")}
-            name="firstName"
+            id="deviceName"
+            label={t("deviceManagement.form.deviceName.label")}
+            name="deviceName"
             autoComplete="given-name"
             disabled={processing}
-            value={formik.values.firstName}
+            value={formik.values.deviceName}
             onChange={formik.handleChange}
-            error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-            helperText={formik.touched.firstName && formik.errors.firstName}
+            error={formik.touched.deviceName && Boolean(formik.errors.deviceName)}
+            helperText={formik.touched.deviceName && formik.errors.deviceName}
           />
           <FormControl component="fieldset" margin="normal">
             <FormLabel component="legend">
-              {t("deviceManagement.form.downConnector.label")}
+              {t("deviceManagement.form.source.label")}
             </FormLabel>
             <RadioGroup
               row
-              aria-label="downConnector"
-              name="downConnector"
-              value={formik.values.downConnector}
+              aria-label="source"
+              name="source"
+              value={formik.values.source}
               onChange={formik.handleChange}
             >
-              {downConnectors.map((downConnector) => (
+              {sources.map((source) => (
                 <FormControlLabel
-                  key={downConnector.value}
+                  key={source.value}
                   disabled={processing}
-                  value={downConnector.value}
+                  value={source.value}
                   control={<Radio />}
-                  label={t(downConnector.label)}
+                  label={t(source.label)}
                 />
               ))}
             </RadioGroup>
           </FormControl>
           <FormControl component="fieldset" margin="normal">
             <FormLabel component="legend">
-              {t("deviceManagement.form.upConnector.label")}
+              {t("deviceManagement.form.destination.label")}
             </FormLabel>
             <RadioGroup
               row
-              aria-label="upConnector"
-              name="upConnector"
-              value={formik.values.upConnector}
+              aria-label="destination"
+              name="destination"
+              value={formik.values.destination}
               onChange={formik.handleChange}
             >
-              {upConnectors.map((upConnector) => (
+              {destinations.map((destination) => (
                 <FormControlLabel
-                  key={upConnector.value}
+                  key={destination.value}
                   disabled={processing}
-                  value={upConnector.value}
+                  value={destination.value}
                   control={<Radio />}
-                  label={t(upConnector.label)}
+                  label={t(destination.label)}
                 />
               ))}
             </RadioGroup>

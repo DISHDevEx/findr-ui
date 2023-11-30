@@ -378,19 +378,19 @@
       "firstName": {
         "label": "Name"
       },
-      "upConnector": {
+      "destination": {
         "label": "Destination",
         "options": {
-          "s": "S3",
-          "d": "Dynamo DB",
+          "s": "s3",
+          "d": "dynamodb",
           "b": "Blob Store"
         }
       },
-      "downConnector": {
+      "source": {
         "label": "Protocol",
         "options": {
-          "m": "MQTT",
-          "h": "HTPP"
+          "m": "mqtts",
+          "h": "http"
         }
       },
       "lastName": {
@@ -418,7 +418,7 @@
     "table": {
       "headers": {
         "actions": "Actions",
-        "upConnector": "Destination",
+        "destination": "Destination",
         "deviceType": "Type",
         "status": "Status",
         "device": "Device"

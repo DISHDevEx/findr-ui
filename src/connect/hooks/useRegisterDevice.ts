@@ -3,15 +3,15 @@ import { useMutation, useQueryClient } from "react-query";
 import { addOne } from "../../core/utils/crudUtils";
 import { Device } from "../types/device";
 
-const addDevice = async (device: Device): Promise<Device> => {
+const registerDevice = async (device: Device): Promise<Device> => {
   const { data } = await axios.post("http://findr-alb-1636228672.us-east-1.elb.amazonaws.com/trigger-adapters", device);
   return data;
 };
 
-export function useAddDevice() {
+export function useRegisterDevice() {
   const queryClient = useQueryClient();
 
-  const { isLoading, mutateAsync } = useMutation(addDevice, {
+  const { isLoading, mutateAsync } = useMutation(registerDevice, {
     onSuccess: (device: Device) => {
       queryClient.setQueryData<Device[]>(["devices"], (oldDevices) =>
         addOne(oldDevices, device)
@@ -19,5 +19,5 @@ export function useAddDevice() {
     },
   });
 
-  return { isAdding: isLoading, addDevice: mutateAsync };
+  return { isAdding: isLoading, registerDevice: mutateAsync };
 }

@@ -37,7 +37,7 @@ const DeviceManagement = () => {
       .then(() => {
         snackbar.success(
           t("DeviceManagement.notifications.addSuccess", {
-            device: `${device.firstName} ${device.deviceTemplate}`,
+            device: `${device.deviceName} ${device.deviceTemplate}`,
           })
         );
         setOpenDeviceDialog(false);
@@ -65,7 +65,7 @@ const DeviceManagement = () => {
       .then(() => {
         snackbar.success(
           t("DeviceManagement.notifications.updateSuccess", {
-            device: `${device.firstName} ${device.deviceTemplate}`,
+            device: `${device.deviceName} ${device.deviceTemplate}`,
           })
         );
         setOpenDeviceDialog(false);

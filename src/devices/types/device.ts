@@ -3,8 +3,8 @@ export interface Device {
   avatar?: string;
   disabled: boolean;
   localFilePath: string;
-  firstName: string;
-  upConnector?: "S3" | "DynamoDB" | "Blob Store";
+  deviceName: string;
+  destination?: "S3" | "DynamoDB" | "Blob Store";
   deviceTemplate: string;
   deviceType: string;
   mqttsBroker: string;
@@ -15,6 +15,7 @@ export interface Device {
   httpRoute: string;
   s3Bucket: string;
   s3Region: string;
+  s3FileKey: string;
   dynamoDBTableName: string;
   dynamoDBRegion: string;
 

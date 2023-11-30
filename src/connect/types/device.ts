@@ -1,12 +1,11 @@
 export interface Device {
   id: string;
-  avatar?: string;
-  disabled: boolean;
   localFilePath: string;
-  firstName: string;
-  upConnector?: "S3" | "DynamoDB" | "Blob Store";
-  deviceTemplate: string;
-  deviceType: string;
+  deviceName: string;
+  destination?: "s3" | "dynamodb" | "Blob Store";
+  source?: "mqtts" | "http";
+  // deviceTemplate: string;
+  // deviceType: string;
   mqttsBroker: string;
   topic: string;
   clientID: string;
@@ -15,6 +14,7 @@ export interface Device {
   httpRoute: string;
   s3Bucket: string;
   s3Region: string;
+  s3FileKey: string;
   dynamoDBTableName: string;
   dynamoDBRegion: string;
 

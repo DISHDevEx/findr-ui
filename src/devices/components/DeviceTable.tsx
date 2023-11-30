@@ -37,9 +37,9 @@ const headCells: HeadCell[] = [
     label: "deviceManagement.table.headers.device",
   },
   {
-    id: "upConnector",
+    id: "destination",
     align: "center",
-    label: "deviceManagement.table.headers.upConnector",
+    label: "deviceManagement.table.headers.destination",
   },
   {
     id: "deviceType",
@@ -164,15 +164,15 @@ const DeviceRow = ({
           </Avatar>
           <Box>
             <Typography component="div" variant="h6">
-              {`${device.lastName} ${device.firstName}`}
+              {`${device.deviceTemplate} ${device.deviceName}`}
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              {device.macAddress}
+              {device.localFilePath}
             </Typography>
           </Box>
         </Box>
       </TableCell>
-      <TableCell align="center">{device.upConnector}</TableCell>
+      <TableCell align="center">{device.destination}</TableCell>
       <TableCell align="center">{device.deviceType}</TableCell>
       <TableCell align="center">
         {device.disabled ? (
