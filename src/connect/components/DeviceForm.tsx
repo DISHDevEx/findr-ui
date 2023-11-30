@@ -1,3 +1,4 @@
+import axios from "axios";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -28,6 +29,12 @@ const sources = [
 ];
 
 const deviceTypes = ["Sensor", "Camera"];
+
+const testRegistration = device => {
+  axios.delete(`http://localhost:5000/${quiz}`).then(res => {
+    console.log(res.data);
+  });
+};
 
 type DeviceFormProps = {
   onAdd: (device: Partial<Device>) => void;
@@ -61,13 +68,13 @@ const DeviceForm = ({
 
   const formik = useFormik({
     initialValues: {
-      disabled: device ? device.disabled : false,
+      // disabled: device ? device.disabled : false,
       localFilePath: device ? device.localFilePath : "",
       deviceName: device ? device.deviceName : "",
       source: device ? device.source : "mqtts",
       destination: device ? device.destination : "s3",
       deviceTemplate: device ? device.deviceTemplate : "",
-      deviceType: device ? device.deviceType : "",
+      // deviceType: device ? device.deviceType : "",
       httpPortNumber: device ? device.httpPortNumber : "",
       httpRoute: device ? device.httpRoute : "",
       mqttsBroker: device ? device.mqttsBroker : "",
@@ -105,7 +112,7 @@ const DeviceForm = ({
         mb: 3,
       }}
     >
-      <TextField
+      {/* <TextField
         margin="normal"
         required
         fullWidth
@@ -119,7 +126,7 @@ const DeviceForm = ({
         onChange={formik.handleChange}
         error={formik.touched.deviceTemplate && Boolean(formik.errors.deviceTemplate)}
         helperText={formik.touched.deviceTemplate && formik.errors.deviceTemplate}
-      />
+      /> */}
       <TextField
         margin="normal"
         required
@@ -133,6 +140,20 @@ const DeviceForm = ({
         onChange={formik.handleChange}
         error={formik.touched.deviceName && Boolean(formik.errors.deviceName)}
         helperText={formik.touched.deviceName && formik.errors.deviceName}
+      />
+      <TextField
+        margin="normal"
+        required
+        fullWidth
+        id="localFilePath"
+        label={t("deviceManagement.form.localFilePath.label")}
+        name="localFilePath"
+        autoComplete="localFilePath"
+        disabled={processing}
+        value={formik.values.localFilePath}
+        onChange={formik.handleChange}
+        error={formik.touched.localFilePath && Boolean(formik.errors.localFilePath)}
+        helperText={formik.touched.localFilePath && formik.errors.localFilePath}
       />
       <FormControl component="fieldset" margin="normal">
         <FormLabel component="legend">
@@ -316,22 +337,7 @@ const DeviceForm = ({
         onChange={formik.handleChange}
         />
       )}
-
-      <TextField
-        margin="normal"
-        required
-        fullWidth
-        id="localFilePath"
-        label={t("deviceManagement.form.localFilePath.label")}
-        name="localFilePath"
-        autoComplete="localFilePath"
-        disabled={processing}
-        value={formik.values.localFilePath}
-        onChange={formik.handleChange}
-        error={formik.touched.localFilePath && Boolean(formik.errors.localFilePath)}
-        helperText={formik.touched.localFilePath && formik.errors.localFilePath}
-      />
-      <TextField
+      {/* <TextField
         margin="normal"
         required
         id="deviceType"
@@ -350,8 +356,8 @@ const DeviceForm = ({
             {deviceType}
           </MenuItem>
         ))}
-      </TextField>
-      <FormControl component="fieldset" margin="normal">
+      </TextField> */}
+      {/* <FormControl component="fieldset" margin="normal">
         <FormControlLabel
           name="disabled"
           disabled={processing}
@@ -360,7 +366,7 @@ const DeviceForm = ({
           control={<Checkbox />}
           label={t("deviceManagement.form.disabled.label")}
         />
-      </FormControl>
+      </FormControl> */}
       <Button 
         variant="contained" 
         endIcon={<PublishIcon />}

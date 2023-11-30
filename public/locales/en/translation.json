@@ -375,22 +375,22 @@
       "localFilePath": {
         "label": "Local File Path"
       },
-      "firstName": {
-        "label": "Name"
+      "deviceName": {
+        "label": "Device Name"
       },
       "destination": {
         "label": "Destination",
         "options": {
-          "s": "s3",
-          "d": "dynamodb",
+          "s": "S3",
+          "d": "Dynamo DB",
           "b": "Blob Store"
         }
       },
       "source": {
         "label": "Protocol",
         "options": {
-          "m": "mqtts",
-          "h": "http"
+          "m": "MQTT",
+          "h": "HTTP"
         }
       },
       "lastName": {

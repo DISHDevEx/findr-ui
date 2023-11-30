@@ -39,7 +39,7 @@ const DeviceRegistration = () => {
       .then(() => {
         snackbar.success(
           t("DeviceManagement.notifications.addSuccess", {
-            device: `${device.deviceName} ${device.deviceTemplate}`,
+            device: `${device.deviceName}`,
           })
         );
         setOpenDeviceDialog(false);

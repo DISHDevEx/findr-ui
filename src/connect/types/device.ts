@@ -1,5 +1,5 @@
 export interface Device {
-  id: string;
+  //id: string;
   localFilePath: string;
   deviceName: string;
   destination?: "s3" | "dynamodb" | "Blob Store";
