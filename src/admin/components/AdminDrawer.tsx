@@ -9,6 +9,7 @@ import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import EventIcon from "@material-ui/icons/Event";
 import HelpCenterIcon from "@material-ui/icons/HelpCenter";
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import HomeIcon from "@material-ui/icons/Home";
 import SensorIcon from "@material-ui/icons/Sensors";
 import PersonIcon from "@material-ui/icons/Person";
@@ -151,6 +152,23 @@ const AdminDrawer = ({
             </ListItemAvatar>
             <ListItemText
               primary={t("admin.drawer.menu.help")}
+              sx={{
+                display: collapsed ? "none" : "block",
+              }}
+            />
+          </ListItem>
+          <ListItem
+          button
+          component={NavLink}
+          to={`/${process.env.PUBLIC_URL}/under-construction`}
+        >
+          <ListItemAvatar>
+              <Avatar sx={{ color: "inherit", bgcolor: "transparent" }}>
+                <AutoStoriesIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={t("admin.drawer.menu.documentation")}
               sx={{
                 display: collapsed ? "none" : "block",
               }}

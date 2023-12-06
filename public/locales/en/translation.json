@@ -10,7 +10,8 @@
         "deviceManagement": "Manage",
         "vault": "Vault",
         "graphql": "Apollo",
-        "harbor": "Harbor"
+        "harbor": "Harbor",
+        "documentation": "Documentation"
       }
     },
     "header": {
