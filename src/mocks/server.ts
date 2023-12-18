@@ -13,10 +13,13 @@ function generateId() {
   return (Math.floor(Math.random() * 10000) + 1).toString();
 }
 
+// const axiosMockInstance = axios.create();
+
 // This sets the mock adapter on the default instance
-let mock = new MockAdapter(axios, { delayResponse: 2000 });
+export const mock = new MockAdapter(axios, { delayResponse: 10 });
 
 // Activity
+// mock.restore();
 mock.onGet("/api/activity-logs").reply(200, activityLogs);
 
 // Auth
@@ -51,7 +54,7 @@ mock.onPut("/api/profile-info").reply(({ data }) => [200, data]);
 // Devices
 mock.onDelete("/api/devices").reply(({ data }) => [200, data]);
 mock.onGet("/api/devices").reply(200, devices);
-mock
-  .onPost("/api/devices")
-  .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
+// mock
+//   .onPost("/api/devices")
+//   .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
 mock.onPut("/api/devices").reply(({ data }) => [200, data]);

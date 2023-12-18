@@ -63,16 +63,13 @@ const DeviceDialog = ({
   const formik = useFormik({
     initialValues: {
       disabled: device ? device.disabled : false,
-      localFilePath: device ? device.localFilePath : "",
+      // localFilePath: device ? device.localFilePath : "",
       deviceName: device ? device.deviceName : "",
       destination: device ? device.destination : "S3",
       deviceTemplate: device ? device.deviceTemplate : "",
       deviceType: device ? device.deviceType : "",
     },
     validationSchema: Yup.object({
-      localFilePath: Yup.string()
-        .max(20, t("common.validations.max", { size: 20 }))
-        .required(t("common.validations.required")),
       deviceName: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
@@ -166,7 +163,7 @@ const DeviceDialog = ({
               ))}
             </RadioGroup>
           </FormControl>
-          <TextField
+          {/* <TextField
             margin="normal"
             required
             fullWidth
@@ -179,7 +176,7 @@ const DeviceDialog = ({
             onChange={formik.handleChange}
             error={formik.touched.localFilePath && Boolean(formik.errors.localFilePath)}
             helperText={formik.touched.localFilePath && formik.errors.localFilePath}
-          />
+          /> */}
           <TextField
             margin="normal"
             required

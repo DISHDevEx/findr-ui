@@ -9,11 +9,11 @@ export interface Device {
   deviceType: string;
   mqttsBroker: string;
   topic: string;
-  clientID: string;
-  caFilePath: string;
+  clientId: string;
+  // caFilePath: string;
   httpPortNumber: string;
   httpRoute: string;
-  s3Bucket: string;
+  s3BucketName: string;
   s3Region: string;
   s3FileKey: string;
   dynamoDBTableName: string;

@@ -12,6 +12,7 @@
     "@material-ui/icons": "^5.0.0-alpha.35",
     "@material-ui/lab": "5.0.0-alpha.35",
     "@mui/icons-material": "^5.14.16",
+    "@mui/joy": "^5.0.0-beta.17",
     "@mui/material": "^5.14.17",
     "@sentry/react": "^6.4.1",
     "@testing-library/jest-dom": "^5.11.4",
