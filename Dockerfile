@@ -18,6 +18,7 @@ RUN yarn config set "strict-ssl" false -g
 
 # Install dependencies
 RUN yarn install
+RUN yarn cache clean
 
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
