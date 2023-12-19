@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./dockerfile_ui
+          file: ./Dockerfile
           push: true
           tags: pravnreddy429/findr_ui:v0
 
