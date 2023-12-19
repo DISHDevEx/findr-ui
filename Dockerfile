@@ -20,6 +20,7 @@ RUN yarn config set "strict-ssl" false -g
 RUN yarn install
 RUN yarn cache clean
 
+
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
 
@@ -27,7 +28,7 @@ RUN export NODE_OPTIONS="--openssl-legacy-provider"
 COPY . .
 
 # Build the React app
-RUN yarn run build
+#RUN yarn run build
 
 # Use a smaller base image for the production build
 FROM nginx:alpine
