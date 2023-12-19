@@ -1,4 +1,4 @@
-import { ThemeProvider as MuiThemeProvider } from "@material-ui/core";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
