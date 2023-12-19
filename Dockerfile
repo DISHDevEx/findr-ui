@@ -20,7 +20,7 @@ RUN yarn config set "strict-ssl" false -g
 RUN yarn install
 
 # Set NODE_OPTIONS
-ENV NODE_OPTIONS="--openssl-legacy-provider"
+RUN export NODE_OPTIONS="--openssl-legacy-provider"
 
 # Copy the content of the local src directory to the working directory
 COPY . .
