@@ -26,7 +26,7 @@ ENV NODE_OPTIONS="--openssl-legacy-provider"
 COPY . .
 
 # Build the React app
-RUN npm run build
+RUN yarn run build
 
 # Use a smaller base image for the production build
 FROM nginx:alpine
