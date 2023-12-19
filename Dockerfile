@@ -37,7 +37,7 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 
 # Copy the built app from the builder stage
-COPY --from=builder /app/build .
+#COPY --from=builder /app/build .
 
 # Expose port 80
 EXPOSE 80
