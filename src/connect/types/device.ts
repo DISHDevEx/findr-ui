@@ -1,7 +1,7 @@
 export interface Device {
   //id: string;
   // localFilePath: string;
-  deviceName: string;
+  deviceId: string;
   destination?: "s3" | "dynamodb" | "Blob Store";
   source?: "mqtts" | "http";
   // deviceTemplate: string;

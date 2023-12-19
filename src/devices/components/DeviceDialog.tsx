@@ -64,13 +64,13 @@ const DeviceDialog = ({
     initialValues: {
       disabled: device ? device.disabled : false,
       // localFilePath: device ? device.localFilePath : "",
-      deviceName: device ? device.deviceName : "",
+      deviceId: device ? device.deviceId : "",
       destination: device ? device.destination : "S3",
       deviceTemplate: device ? device.deviceTemplate : "",
       deviceType: device ? device.deviceType : "",
     },
     validationSchema: Yup.object({
-      deviceName: Yup.string()
+      deviceId: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
       deviceTemplate: Yup.string()
@@ -109,15 +109,15 @@ const DeviceDialog = ({
             margin="normal"
             required
             fullWidth
-            id="deviceName"
-            label={t("deviceManagement.form.deviceName.label")}
-            name="deviceName"
+            id="deviceId"
+            label={t("deviceManagement.form.deviceId.label")}
+            name="deviceId"
             autoComplete="given-name"
             disabled={processing}
-            value={formik.values.deviceName}
+            value={formik.values.deviceId}
             onChange={formik.handleChange}
-            error={formik.touched.deviceName && Boolean(formik.errors.deviceName)}
-            helperText={formik.touched.deviceName && formik.errors.deviceName}
+            error={formik.touched.deviceId && Boolean(formik.errors.deviceId)}
+            helperText={formik.touched.deviceId && formik.errors.deviceId}
           />
           <FormControl component="fieldset" margin="normal">
             <FormLabel component="legend">

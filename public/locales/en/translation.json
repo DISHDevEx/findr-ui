@@ -376,7 +376,7 @@
       "localFilePath": {
         "label": "Local File Path"
       },
-      "deviceName": {
+      "deviceId": {
         "label": "Device Name"
       },
       "destination": {

@@ -68,7 +68,7 @@ const DeviceForm = ({
   };
 
     const findrapi = axios.create({
-      baseURL: 'http://findr-alb-1636228672.us-east-1.elb.amazonaws.com',
+      baseURL: 'http://10.5.130.98:8080',
       timeout: 1000,
       headers: {'Content-Type': 'application/json'}
     });
@@ -78,7 +78,7 @@ const DeviceForm = ({
     mock.restore();
     console.log(values);
     console.log(JSON.stringify(values));
-    findrapi.post("/findr-backend", values)
+    findrapi.post("/oracle", values)
       .then(function (res) {
          console.log(res)
          alert('Successfully signed up!');  
@@ -109,7 +109,7 @@ const DeviceForm = ({
     initialValues: {
       // disabled: device ? device.disabled : false,
       //localFilePath: device ? device.localFilePath : "",
-      deviceName: device ? device.deviceName : "",
+      deviceId: device ? device.deviceId : "",
       source: device ? device.source : "mqtts",
       destination: device ? device.destination : "s3",
       // deviceTemplate: device ? device.deviceTemplate : "",
@@ -127,7 +127,7 @@ const DeviceForm = ({
       dynamoDBRegion: device ? device.dynamoDBRegion : "",
     },
     validationSchema: Yup.object({
-      deviceName: Yup.string()
+      deviceId: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
       source: Yup.string()
@@ -168,15 +168,15 @@ const DeviceForm = ({
           margin="normal"
           required
           fullWidth
-          id="deviceName"
-          label={t("deviceManagement.form.deviceName.label")}
-          name="deviceName"
+          id="deviceId"
+          label={t("deviceManagement.form.deviceId.label")}
+          name="deviceId"
           autoComplete="given-name"
           disabled={processing}
-          value={formik.values.deviceName}
+          value={formik.values.deviceId}
           onChange={formik.handleChange}
-          error={formik.touched.deviceName && Boolean(formik.errors.deviceName)}
-          helperText={formik.touched.deviceName && formik.errors.deviceName}
+          error={formik.touched.deviceId && Boolean(formik.errors.deviceId)}
+          helperText={formik.touched.deviceId && formik.errors.deviceId}
         />
         {/* <TextField
           margin="normal"

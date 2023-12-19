@@ -164,7 +164,7 @@ const DeviceRow = ({
           </Avatar>
           <Box>
             <Typography component="div" variant="h6">
-              {`${device.deviceTemplate} ${device.deviceName}`}
+              {`${device.deviceTemplate} ${device.deviceId}`}
             </Typography>
             <Typography color="textSecondary" variant="body2">
               {device.localPath}

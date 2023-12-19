@@ -3,7 +3,7 @@ export interface Device {
   avatar?: string;
   disabled: boolean;
   localFilePath: string;
-  deviceName: string;
+  deviceId: string;
   destination?: "S3" | "DynamoDB" | "Blob Store";
   deviceTemplate: string;
   deviceType: string;

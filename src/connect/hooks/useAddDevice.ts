@@ -4,13 +4,13 @@ import { addOne } from "../../core/utils/crudUtils";
 import { Device } from "../types/device";
 
 const findrapi = axios.create({
-  baseURL: 'http://findr-alb-1636228672.us-east-1.elb.amazonaws.com',
+  baseURL: 'http://10.5.130.98:8080',
   timeout: 1000,
   headers: {'Content-Type': 'application/json'}
 });
 
 const addDevice = async (device: Device): Promise<Device> => {
-  const { data } = await findrapi.post("/findr-backend", device);
+  const { data } = await findrapi.post("/oracle", device);
   return data;
 };
 
