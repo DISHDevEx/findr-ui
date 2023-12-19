@@ -10,6 +10,18 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Remove existing node_modules and package-lock.json
+RUN rm -rf node_modules package-lock.json
+
+# Set yarn configuration
+RUN yarn config set "strict-ssl" false -g
+
+# Install dependencies
+RUN yarn install
+
+# Set NODE_OPTIONS
+ENV NODE_OPTIONS="--openssl-legacy-provider"
+
 # Copy the content of the local src directory to the working directory
 COPY . .
 
@@ -29,4 +41,4 @@ COPY --from=builder /app/build .
 EXPOSE 80
 
 # Start Nginx to serve the application
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["yarn", "start"]
