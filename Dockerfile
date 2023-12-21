@@ -40,7 +40,7 @@ WORKDIR /usr/share/nginx/html
 #COPY --from=builder /app/build .
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 3000
 
 # Start Nginx to serve the application
 CMD ["yarn", "start"]

@@ -405,11 +405,11 @@ const DeviceForm = ({
         > 
           {t("Submit")}
         </Button>
-        <LoadingButton loading={processing} type="submit" variant="contained">
+        {/* <LoadingButton loading={processing} type="submit" variant="contained">
             {editMode
               ? t("deviceManagement.modal.edit.action")
               : t("deviceManagement.modal.add.action")}
-        </LoadingButton>
+        </LoadingButton> */}
     </form>
   </Box>
   );
