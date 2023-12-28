@@ -47,4 +47,4 @@ RUN yarn run
 EXPOSE 7000
 
 # Start Nginx to serve the application
-CMD ["yarn", "start"]
+CMD ["start"]
