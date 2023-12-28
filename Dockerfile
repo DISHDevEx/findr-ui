@@ -2,7 +2,8 @@
 FROM node:14-alpine
 
 # Install Yarn globally
-#RUN npm install -g yarn
+RUN npm install -g yarn --force
+
 
 # Set the working directory to app
 WORKDIR /app
@@ -10,7 +11,7 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 #COPY package*.json ./
 
-Remove existing node_modules and package-lock.json
+#Remove existing node_modules and package-lock.json
 RUN rm -rf node_modules package-lock.json
 
 # Copy package.json and yarn.lock and node_modules to the container
