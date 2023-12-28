@@ -10,19 +10,16 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-
-# Remove existing node_modules and package-lock.json
-RUN rm -rf node_modules package-lock.json
+# Set yarn configuration
+RUN yarn config set "strict-ssl" false -g
 
 # Install dependencies
 RUN npm install -g yarn
 RUN yarn install
 RUN yarn cache clean
 
-# Set yarn configuration
-RUN yarn config set "strict-ssl" false -g
-
-
+# Remove existing node_modules and package-lock.json
+RUN rm -rf node_modules package-lock.json
 
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
