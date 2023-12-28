@@ -10,15 +10,18 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+
 # Remove existing node_modules and package-lock.json
 RUN rm -rf node_modules package-lock.json
+
+# Install dependencies
+RUN npm install -g yarn
+RUN yarn install
+RUN yarn cache clean
 
 # Set yarn configuration
 RUN yarn config set "strict-ssl" false -g
 
-# Install dependencies
-RUN yarn install
-RUN yarn cache clean
 
 
 # Set NODE_OPTIONS
@@ -26,6 +29,7 @@ RUN export NODE_OPTIONS="--openssl-legacy-provider"
 
 # Copy the content of the local src directory to the working directory
 COPY . .
+
 
 # Build the React app
 #RUN yarn run build
