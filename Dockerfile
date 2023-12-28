@@ -2,8 +2,10 @@
 FROM node:14-alpine
 
 # Install Yarn globally
-RUN npm install -g yarn --force
+#RUN npm install -g yarn --force
 
+# Add yarn to the PATH
+export PATH="$PATH:/usr/local/bin/yarn"
 
 # Set the working directory to app
 WORKDIR /app
@@ -46,6 +48,9 @@ ADD . .
 
 # Expose port 7000
 EXPOSE 7000
+
+# Add yarn to the PATH
+export PATH="$PATH:/usr/local/bin/yarn"
 
 # Start Nginx to serve the application
 CMD ["yarn", "run", "start"]
