@@ -1,20 +1,20 @@
 # Use an official Node.js runtime as a parent image
-FROM node:14-alpine as builder
+FROM node:14-alpine
 
-# Set the working directory to /app
-WORKDIR /app
+# Set the working directory to current
+WORKDIR .
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install -g yarn
 
 # Set yarn configuration
 RUN yarn config set "strict-ssl" false -g
 
 # Install dependencies
-RUN npm install -g yarn
 RUN yarn install
 RUN yarn cache clean
 
@@ -28,8 +28,8 @@ RUN export NODE_OPTIONS="--openssl-legacy-provider"
 COPY . .
 
 
-# Build the React app
-#RUN yarn run build
+Build the React app
+RUN yarn run
 
 # Use a smaller base image for the production build
 #FROM nginx:alpine
