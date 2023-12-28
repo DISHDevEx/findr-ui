@@ -13,8 +13,8 @@ WORKDIR /app
 # Remove existing node_modules and package-lock.json
 #RUN rm -rf node_modules package-lock.json
 
-# Copy package.json and yarn.lock to the container
-COPY package*.json yarn.lock ./
+# Copy package.json and yarn.lock and node_modules to the container
+COPY package*.json yarn.lock node_modules ./
 
 # Set yarn configuration
 RUN yarn config set "strict-ssl" false -g
