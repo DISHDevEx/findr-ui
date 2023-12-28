@@ -7,6 +7,9 @@ WORKDIR .
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+# Copy package.json and yarn.lock to the container
+#COPY package.json yarn.lock ./
+
 # Install dependencies
 RUN npm install
 RUN npm install -g yarn
@@ -28,7 +31,7 @@ RUN export NODE_OPTIONS="--openssl-legacy-provider"
 COPY . .
 
 
-Build the React app
+#Build the React app
 RUN yarn run
 
 # Use a smaller base image for the production build
