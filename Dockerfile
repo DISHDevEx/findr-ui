@@ -14,7 +14,7 @@ Remove existing node_modules and package-lock.json
 RUN rm -rf node_modules package-lock.json
 
 # Copy package.json and yarn.lock and node_modules to the container
-COPY package*.json yarn.lock node_modules ./
+COPY package*.json yarn.lock ./
 
 # Set yarn configuration
 RUN yarn config set "strict-ssl" false -g
@@ -22,6 +22,7 @@ RUN yarn config set "strict-ssl" false -g
 # Install dependencies
 RUN yarn install
 RUN yarn cache clean
+
 
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
