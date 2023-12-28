@@ -5,10 +5,10 @@ FROM node:14-alpine
 WORKDIR .
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+#COPY package*.json ./
 
 # Copy package.json and yarn.lock to the container
-#COPY package.json yarn.lock ./
+COPY package*.json yarn.lock ./
 
 # Install dependencies
 RUN npm install
@@ -22,7 +22,7 @@ RUN yarn install
 RUN yarn cache clean
 
 # Remove existing node_modules and package-lock.json
-RUN rm -rf node_modules package-lock.json
+#RUN rm -rf node_modules package-lock.json
 
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
