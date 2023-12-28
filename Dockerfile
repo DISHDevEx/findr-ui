@@ -12,7 +12,7 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
-RUN npm install -g yarn
+#RUN npm install -g yarn
 
 # Set yarn configuration
 RUN yarn config set "strict-ssl" false -g
