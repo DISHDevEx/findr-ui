@@ -32,10 +32,10 @@ COPY . .
 #RUN yarn run build
 
 # Use a smaller base image for the production build
-FROM nginx:alpine
+#FROM nginx:alpine
 
 # Set the working directory to /usr/share/nginx/html
-WORKDIR /usr/share/nginx/html
+#WORKDIR /usr/share/nginx/html
 
 # Copy the built app from the builder stage
 #COPY --from=builder /app/build .
