@@ -10,8 +10,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 #COPY package*.json ./
 
-# Remove existing node_modules and package-lock.json
-#RUN rm -rf node_modules package-lock.json
+Remove existing node_modules and package-lock.json
+RUN rm -rf node_modules package-lock.json
 
 # Copy package.json and yarn.lock and node_modules to the container
 COPY package*.json yarn.lock node_modules ./
@@ -20,19 +20,18 @@ COPY package*.json yarn.lock node_modules ./
 RUN yarn config set "strict-ssl" false -g
 
 # Install dependencies
-RUN yarn cache clean
 RUN yarn install
-
+RUN yarn cache clean
 
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
 
 # Copy the content of the local src directory to the working directory
-COPY . .
-
+#COPY . .
+ADD . .
 
 #Build the React app
-RUN yarn run
+#RUN yarn run
 
 # Use a smaller base image for the production build
 #FROM nginx:alpine
@@ -47,4 +46,4 @@ RUN yarn run
 EXPOSE 7000
 
 # Start Nginx to serve the application
-CMD ["start"]
+CMD ["yarn", "run", "start"]
