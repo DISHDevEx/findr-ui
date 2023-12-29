@@ -111,47 +111,6 @@ const DeviceRegistration = () => {
               component="div"
               variant="h2"
             >{`Connect`}</Typography>
-      {/* <Grid container spacing={1}>
-        <Grid item xs={12} md={6} marginTop={15}>
-          <Tooltip title="S3">
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textAlign: "center",
-                mb: 3,
-              }}
-            >
-                <SvgContainer>
-                  <S3Svg />
-                </SvgContainer>
-              {/* <Typography
-                component="div"
-                variant="h3"
-              >{`S3`}</Typography> */}
-            {/* </Box>
-          </Tooltip>
-        </Grid> */}
-        {/* <Grid item xs={12} md={6} marginTop={15}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              textAlign: "center",
-              mb: 3,
-            }}
-          >
-            <SvgContainer>
-              <DynamoSvg style={{ maxWidth: 280, width: "100%" }} />
-            </SvgContainer>
-            <Typography
-              component="div"
-              variant="h4"
-            >{`DynamoDB`}</Typography>
-          </Box>
-        </Grid> */}
         <Grid item xs={12} md={12} marginTop={3}>
           <Box sx={{ mb: 4 }}>
             <DeviceForm
@@ -167,7 +126,6 @@ const DeviceRegistration = () => {
             <Outlet />
           </QueryWrapper>
         </Grid>
-      {/* </Grid> */}
     </React.Fragment>
   );
 };
