@@ -32,8 +32,9 @@ RUN echo "Current PATH: $PATH"
 RUN which yarn
 
 #Check permissions
-chmod +x /docker-entrypoint.sh
-ls -l /usr/local/bin/yarn
+RUN chmod +x /docker-entrypoint.sh
+RUN ls -l /usr/local/bin/yarn
+
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
 
