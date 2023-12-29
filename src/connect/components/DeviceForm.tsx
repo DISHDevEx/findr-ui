@@ -68,6 +68,7 @@ const DeviceForm = ({
   const editMode = Boolean(device && device.deviceId);
 
   const handleSubmit1 = (values: Partial<Device>) => {
+    mock.reset();
     mock.restore();
     console.log("handling submit1");
     console.log(values);
@@ -86,6 +87,7 @@ const DeviceForm = ({
   
   
   const handleSubmit = (values: Partial<Device>) => {
+    mock.reset();
     mock.restore();
     console.log("handling submit");
     console.log(values);
@@ -148,7 +150,7 @@ const DeviceForm = ({
         .required(t("common.validations.required")),
       destination: Yup.string().required(t("common.validations.required")),
     }),
-    onSubmit: handleSubmit1,
+    onSubmit: handleSubmit,
   });
 
   return (
@@ -419,9 +421,7 @@ const DeviceForm = ({
           {t("Submit")}
         </Button>
          <LoadingButton loading={processing} type="submit" variant="contained">
-            {editMode
-              ? t("deviceManagement.modal.edit.action")
-              : t("deviceManagement.modal.add.action")}
+            <span>Add</span>
         </LoadingButton> 
     </form>
   </Box>
