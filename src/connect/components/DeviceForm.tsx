@@ -5,6 +5,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
+import { makeStyles } from '@material-ui/styles';
 import MenuItem from "@material-ui/core/MenuItem";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -35,6 +36,14 @@ const sources = [
 ];
 
 const deviceTypes = ["Sensor", "Camera"];
+
+const useStyles = makeStyles({
+  radio: {
+    '& .MuiSvgIcon-root': {
+      display: 'none', // Hide the default radio button icon
+    },
+  },
+});
 
 type DeviceFormProps = {
   onAdd: (device: Partial<Device>) => void;
@@ -68,7 +77,7 @@ const DeviceForm = ({
   };
 
     const findrapi = axios.create({
-      baseURL: 'http://10.5.130.98:8080',
+      baseURL: 'https://afd0e01f0d9594dc5adbd0350e4454c7-1214440607.us-east-1.elb.amazonaws.com',
       timeout: 1000,
       headers: {'Content-Type': 'application/json'}
     });
@@ -78,10 +87,10 @@ const DeviceForm = ({
     mock.restore();
     console.log(values);
     console.log(JSON.stringify(values));
-    findrapi.post("/oracle", values)
+    findrapi.post("", values)
       .then(function (res) {
          console.log(res)
-         alert('Successfully signed up!');  
+         alert('Successfully registered device!');  
       })
       .catch(function (error) {
         if (error.response) {
