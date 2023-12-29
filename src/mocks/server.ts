@@ -58,3 +58,8 @@ mock
   .onPost("/api/devices")
   .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
 mock.onPut("/api/devices").reply(({ data }) => [200, data]);
+
+// Oracle
+mock
+  .onPost("/oracle")
+  .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
