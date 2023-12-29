@@ -5,7 +5,9 @@ FROM node:14-alpine
 #RUN npm install -g yarn --force
 
 # Add yarn to the PATH
-RUN export PATH="$PATH:/usr/local/bin/yarn"
+# Create a symlink for yarn and add it to the PATH
+RUN ln -s "$(npm bin --global)/yarn" /usr/local/bin/yarn
+
 
 # Set the working directory to app
 WORKDIR /app
