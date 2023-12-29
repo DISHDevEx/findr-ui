@@ -32,7 +32,7 @@ RUN echo "Current PATH: $PATH"
 RUN which yarn
 
 #Check permissions
-RUN chmod +x /docker-entrypoint.sh
+#RUN chmod +x /docker-entrypoint.sh
 RUN ls -l /usr/local/bin/yarn
 
 # Set NODE_OPTIONS
