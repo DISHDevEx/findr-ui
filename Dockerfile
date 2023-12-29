@@ -27,6 +27,13 @@ RUN yarn cache clean
 # Add Yarn to the PATH
 ENV PATH="/usr/local/bin:${PATH}"
 
+# Print PATH and check if yarn is found
+RUN echo "Current PATH: $PATH"
+RUN which yarn
+
+#Check permissions
+chmod +x /docker-entrypoint.sh
+ls -l /usr/local/bin/yarn
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
 
