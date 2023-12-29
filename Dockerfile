@@ -25,7 +25,7 @@ RUN yarn install
 RUN yarn cache clean
 
 # Add Yarn to the PATH
-#RUN ENV PATH="/usr/local/bin:${PATH}"
+ENV PATH="/usr/local/bin:${PATH}"
 
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
