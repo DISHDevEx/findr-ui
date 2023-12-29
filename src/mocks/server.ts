@@ -16,7 +16,7 @@ function generateId() {
 // const axiosMockInstance = axios.create();
 
 // This sets the mock adapter on the default instance
-export const mock = new MockAdapter(axios, { delayResponse: 10 });
+export const mock = new MockAdapter(axios, { delayResponse: 10,  onNoMatch: "throwException" });
 
 // Activity
 // mock.restore();
