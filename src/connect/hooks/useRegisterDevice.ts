@@ -4,7 +4,7 @@ import { addOne } from "../../core/utils/crudUtils";
 import { Device } from "../types/device";
 
 const registerDevice = async (device: Device): Promise<Device> => {
-  const { data } = await axios.post("http://findr-alb-1636228672.us-east-1.elb.amazonaws.com/trigger-adapters", device);
+  const { data } = await axios.post("http://afd0e01f0d9594dc5adbd0350e4454c7-1214440607.us-east-1.elb.amazonaws.com/oracle", device);
   return data;
 };
 

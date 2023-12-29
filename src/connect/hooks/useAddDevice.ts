@@ -10,7 +10,7 @@ const findrapi = axios.create({
 });
 
 const addDevice = async (device: Device): Promise<Device> => {
-  const { data } = await findrapi.post("", device);
+  const { data } = await findrapi.post("/oracle", device);
   return data;
 };
 

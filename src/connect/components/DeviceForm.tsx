@@ -77,7 +77,7 @@ const DeviceForm = ({
   };
 
     const findrapi = axios.create({
-      baseURL: 'https://afd0e01f0d9594dc5adbd0350e4454c7-1214440607.us-east-1.elb.amazonaws.com',
+      baseURL: 'http://afd0e01f0d9594dc5adbd0350e4454c7-1214440607.us-east-1.elb.amazonaws.com',
       timeout: 1000,
       headers: {'Content-Type': 'application/json'}
     });
@@ -87,7 +87,7 @@ const DeviceForm = ({
     mock.restore();
     console.log(values);
     console.log(JSON.stringify(values));
-    findrapi.post("", values)
+    findrapi.post("/oracle", values)
       .then(function (res) {
          console.log(res)
          alert('Successfully registered device!');  
