@@ -65,12 +65,14 @@ const DeviceForm = ({
 }: DeviceFormProps) => {
   const { t } = useTranslation();
 
-  const editMode = Boolean(device && device.id);
+  const editMode = Boolean(device && device.deviceId);
 
   const handleSubmit1 = (values: Partial<Device>) => {
-    console.log(values)
-    if (device && device.id) {
-      onUpdate({ ...values, id: device.id } as Device);
+    mock.restore();
+    console.log("handling submit1");
+    console.log(values);
+    if (device && device.deviceId) {
+      onUpdate({ ...values, id: device.deviceId } as Device);
     } else {
       onAdd(values);
     }
@@ -78,13 +80,14 @@ const DeviceForm = ({
 
     const findrapi = axios.create({
       baseURL: 'http://afd0e01f0d9594dc5adbd0350e4454c7-1214440607.us-east-1.elb.amazonaws.com',
-      timeout: 1000,
+      timeout: 100,
       headers: {'Content-Type': 'application/json'}
     });
   
   
   const handleSubmit = (values: Partial<Device>) => {
     mock.restore();
+    console.log("handling submit");
     console.log(values);
     console.log(JSON.stringify(values));
     findrapi.post("/oracle", values)
@@ -414,11 +417,11 @@ const DeviceForm = ({
         > 
           {t("Submit")}
         </Button>
-        {/* <LoadingButton loading={processing} type="submit" variant="contained">
+         <LoadingButton loading={processing} type="submit" variant="contained">
             {editMode
               ? t("deviceManagement.modal.edit.action")
               : t("deviceManagement.modal.add.action")}
-        </LoadingButton> */}
+        </LoadingButton> 
     </form>
   </Box>
   );
