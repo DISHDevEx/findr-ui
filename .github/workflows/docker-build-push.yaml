@@ -36,7 +36,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: pravnreddy429/findr_ui:v0
+          tags: pravnreddy429/findr_ui:v1
 
 
           
