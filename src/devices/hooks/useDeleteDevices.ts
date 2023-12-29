@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
-import { removeMany } from "../../core/utils/crudUtils";
+import { removeMany } from "../../core/utils/crudUtilsDevice";
 import { Device } from "../types/device";
 
 const deleteDevices = async (deviceIds: string[]): Promise<string[]> => {

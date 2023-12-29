@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
-import { addOne } from "../../core/utils/crudUtils";
+import { addOne } from "../../core/utils/crudUtilsDevice";
 import { Device } from "../types/device";
 import { mock } from "../../mocks/server";
 

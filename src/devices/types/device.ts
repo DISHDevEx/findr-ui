@@ -1,7 +1,7 @@
 export interface Device {
   deviceId: string;
-  destination?: "s3" | "dynamodb" | "Blob Store";
-  source?: "mqtts" | "http";
+  destination: "s3" | "dynamodb" | "Blob Store";
+  source: "mqtts" | "http";
   mqttsBroker: string;
   topic: string;
   clientId: string;

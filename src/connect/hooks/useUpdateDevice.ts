@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
-import { updateOne } from "../../core/utils/crudUtils";
+import { updateOne } from "../../core/utils/crudUtilsDevice";
 import { Device } from "../types/device";
 
 const updateDevice = async (device: Device): Promise<Device> => {

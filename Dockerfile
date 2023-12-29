@@ -16,6 +16,8 @@ RUN yarn config set "strict-ssl" false -g
 # Install dependencies
 RUN yarn install
 RUN yarn cache clean
+RUN apk update
+RUN apk add curl
 
 # Add Yarn to the PATH
 ENV PATH="/usr/local/bin:${PATH}"

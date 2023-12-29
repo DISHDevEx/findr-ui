@@ -54,7 +54,7 @@ mock.onPut("/api/profile-info").reply(({ data }) => [200, data]);
 // Devices
 mock.onDelete("/api/devices").reply(({ data }) => [200, data]);
 mock.onGet("/api/devices").reply(200, devices);
-// mock
-//   .onPost("/api/devices")
-//   .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
+mock
+  .onPost("/api/devices")
+  .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
 mock.onPut("/api/devices").reply(({ data }) => [200, data]);
