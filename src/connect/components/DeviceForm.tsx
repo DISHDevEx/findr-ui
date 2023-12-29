@@ -51,7 +51,7 @@ type DeviceFormProps = {
   onUpdate: (device: Device) => void;
   open: boolean;
   processing: boolean;
-  device: Device;
+  device?: Device;
 };
 
 

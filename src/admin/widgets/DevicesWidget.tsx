@@ -16,26 +16,50 @@ import { Link as RouterLink } from "react-router-dom";
 
 const devices = [
   {
-    id: "1",
-    firstName: "Rhys",
-    destination: "S3",
-    lastName: "Arriaga",
-    deviceType: "Sensor",
-  },
-  {
-    id: "2",
-    firstName: "Laura",
-    destination: "Dynamo DB",
-    lastName: "Core",
-    deviceType: "Camera",
-  },
-  {
-    id: "3",
-    firstName: "Joshua",
-    destination: "Blob Store",
-    lastName: "Jagger",
-    deviceType: "Camera",
-  },
+    deviceId: "2",
+    destination: "dynamodb",
+    source: "http",
+    mqttsBroker: "string",
+    topic: "string",
+    clientId: "string",
+    httpPortNumber: "string",
+    httpRoute: "string",
+    s3BucketName: "string",
+    s3Region: "string",
+    s3FileKey: "string",
+    dynamoDBTableName: "string",
+    dynamoDBRegion: "string"
+},
+{
+    deviceId: "3",
+    destination: "s3",
+    source: "mqtts",
+    mqttsBroker: "string",
+    topic: "string",
+    clientId: "string",
+    httpPortNumber: "string",
+    httpRoute: "string",
+    s3BucketName: "string",
+    s3Region: "string",
+    s3FileKey: "string",
+    dynamoDBTableName: "string",
+    dynamoDBRegion: "string"
+},
+{
+    deviceId: "4",
+    destination: "dynamodb",
+    source: "http",
+    mqttsBroker: "string",
+    topic: "string",
+    clientId: "string",
+    httpPortNumber: "string",
+    httpRoute: "string",
+    s3BucketName: "string",
+    s3Region: "string",
+    s3FileKey: "string",
+    dynamoDBTableName: "string",
+    dynamoDBRegion: "string"
+}
 ];
 
 const DevicesWidget = () => {
@@ -48,18 +72,18 @@ const DevicesWidget = () => {
       <CardContent>
         <List>
           {devices.map((device) => (
-            <ListItem disableGutters key={device.id}>
+            <ListItem disableGutters key={device.deviceId}>
               <ListItemAvatar>
                 <Avatar>
                   <DevicesOther />
                 </Avatar>
               </ListItemAvatar>
               <ListItemText
-                primary={`${device.lastName} ${device.firstName}`}
+                primary={`${device.deviceId} ${device.destination}`}
                 primaryTypographyProps={{
                   fontWeight: theme.typography.fontWeightMedium,
                 }}
-                secondary={device.deviceType}
+                secondary={device.source}
               />
               <ListItemSecondaryAction>
                 <IconButton

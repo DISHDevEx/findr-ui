@@ -50,11 +50,11 @@ const DeviceDialog = ({
 }: DeviceDialogProps) => {
   const { t } = useTranslation();
 
-  const editMode = Boolean(device && device.id);
+  const editMode = Boolean(device && device.deviceId);
 
   const handleSubmit = (values: Partial<Device>) => {
-    if (device && device.id) {
-      onUpdate({ ...values, id: device.id } as Device);
+    if (device && device.deviceId) {
+      onUpdate({ ...values, id: device.deviceId } as Device);
     } else {
       onAdd(values);
     }
@@ -62,21 +62,33 @@ const DeviceDialog = ({
 
   const formik = useFormik({
     initialValues: {
-      disabled: device ? device.disabled : false,
-      // localFilePath: device ? device.localFilePath : "",
+      // disabled: device ? device.disabled : false,
+      //localFilePath: device ? device.localFilePath : "",
       deviceId: device ? device.deviceId : "",
-      destination: device ? device.destination : "S3",
-      deviceTemplate: device ? device.deviceTemplate : "",
-      deviceType: device ? device.deviceType : "",
+      source: device ? device.source : "mqtts",
+      destination: device ? device.destination : "s3",
+      // deviceTemplate: device ? device.deviceTemplate : "",
+      // deviceType: device ? device.deviceType : "",
+      httpPortNumber: device ? device.httpPortNumber : "",
+      httpRoute: device ? device.httpRoute : "",
+      mqttsBroker: device ? device.mqttsBroker : "",
+      topic: device ? device.topic : "",
+      clientId: device ? device.clientId : "",
+      //caFilePath: device ? device.caFilePath : "",
+      s3BucketName: device ? device.s3BucketName : "",
+      s3Region: device ? device.s3Region : "",
+      s3FileKey: device ? device.s3FileKey : "",
+      dynamoDBTableName: device ? device.dynamoDBTableName : "",
+      dynamoDBRegion: device ? device.dynamoDBRegion : "",
     },
     validationSchema: Yup.object({
       deviceId: Yup.string()
         .max(20, t("common.validations.max", { size: 20 }))
         .required(t("common.validations.required")),
-      deviceTemplate: Yup.string()
+      source: Yup.string()
         .max(30, t("common.validations.max", { size: 30 }))
         .required(t("common.validations.required")),
-      deviceType: Yup.string().required(t("common.validations.required")),
+      destination: Yup.string().required(t("common.validations.required")),
     }),
     onSubmit: handleSubmit,
   });
@@ -94,21 +106,6 @@ const DeviceDialog = ({
             margin="normal"
             required
             fullWidth
-            id="deviceTemplate"
-            label={t("deviceManagement.form.deviceTemplate.label")}
-            name="deviceTemplate"
-            autoComplete="family-name"
-            autoFocus
-            disabled={processing}
-            value={formik.values.deviceTemplate}
-            onChange={formik.handleChange}
-            error={formik.touched.deviceTemplate && Boolean(formik.errors.deviceTemplate)}
-            helperText={formik.touched.deviceTemplate && formik.errors.deviceTemplate}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
             id="deviceId"
             label={t("deviceManagement.form.deviceId.label")}
             name="deviceId"
@@ -120,93 +117,165 @@ const DeviceDialog = ({
             helperText={formik.touched.deviceId && formik.errors.deviceId}
           />
           <FormControl component="fieldset" margin="normal">
-            <FormLabel component="legend">
-              {t("deviceManagement.form.source.label")}
-            </FormLabel>
-            <RadioGroup
-              row
-              aria-label="source"
-              name="source"
-              value={formik.values.source}
-              onChange={formik.handleChange}
-            >
-              {sources.map((source) => (
-                <FormControlLabel
-                  key={source.value}
-                  disabled={processing}
-                  value={source.value}
-                  control={<Radio />}
-                  label={t(source.label)}
-                />
-              ))}
-            </RadioGroup>
-          </FormControl>
-          <FormControl component="fieldset" margin="normal">
-            <FormLabel component="legend">
-              {t("deviceManagement.form.destination.label")}
-            </FormLabel>
-            <RadioGroup
-              row
-              aria-label="destination"
-              name="destination"
-              value={formik.values.destination}
-              onChange={formik.handleChange}
-            >
-              {destinations.map((destination) => (
-                <FormControlLabel
-                  key={destination.value}
-                  disabled={processing}
-                  value={destination.value}
-                  control={<Radio />}
-                  label={t(destination.label)}
-                />
-              ))}
-            </RadioGroup>
-          </FormControl>
-          {/* <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="localFilePath"
-            label={t("deviceManagement.form.localFilePath.label")}
-            name="localFilePath"
-            autoComplete="localFilePath"
-            disabled={processing}
-            value={formik.values.localFilePath}
+          <FormLabel component="legend">
+            {t("deviceManagement.form.source.label")}
+          </FormLabel>
+          <RadioGroup
+            row
+            aria-label="source"
+            name="source"
+            value={formik.values.source}
             onChange={formik.handleChange}
-            error={formik.touched.localFilePath && Boolean(formik.errors.localFilePath)}
-            helperText={formik.touched.localFilePath && formik.errors.localFilePath}
-          /> */}
+          >
+            <FormControlLabel value="http" control={<Radio />} label={"http"} />
+            <FormControlLabel value="mqtts" control={<Radio />} label={"mqtts"} />
+          </RadioGroup>
+        </FormControl>
+
+        {formik.values.source === 'http' && (
           <TextField
             margin="normal"
             required
-            id="deviceType"
-            disabled={processing}
             fullWidth
-            select
-            label={t("deviceManagement.form.deviceType.label")}
-            name="deviceType"
-            value={formik.values.deviceType}
+            label="HTTP Port Number"
+            id="httpPortNumber"
+            name="httpPortNumber"
+            value={formik.values.httpPortNumber}
             onChange={formik.handleChange}
-            error={formik.touched.deviceType && Boolean(formik.errors.deviceType)}
-            helperText={formik.touched.deviceType && formik.errors.deviceType}
-          >
-            {deviceTypes.map((deviceType) => (
-              <MenuItem key={deviceType} value={deviceType}>
-                {deviceType}
-              </MenuItem>
-            ))}
-          </TextField>
+          />
+        )}
+
+        {formik.values.source === 'http' && (
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="HTTP Route"
+            id="httpRoute"
+            name="httpRoute"
+            value={formik.values.httpRoute}
+            onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.source === 'mqtts' && (
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="MQTT Broker"
+            id="mqttsBroker"
+            name="mqttsBroker"
+            value={formik.values.mqttsBroker}
+            onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.source === 'mqtts' && (
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="MQTT Topic"
+            id="topic"
+            name="topic"
+            value={formik.values.topic}
+            onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.source === 'mqtts' && (
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="clientId"
+            name="clientId"
+            value={formik.values.clientId}
+            onChange={formik.handleChange}
+            label="MQTT Client ID"
+          />
+        )}
           <FormControl component="fieldset" margin="normal">
-            <FormControlLabel
-              name="disabled"
-              disabled={processing}
-              onChange={formik.handleChange}
-              checked={formik.values.disabled}
-              control={<Checkbox />}
-              label={t("deviceManagement.form.disabled.label")}
-            />
-          </FormControl>
+          <FormLabel component="legend">
+            {t("deviceManagement.form.destination.label")}
+          </FormLabel>
+          <RadioGroup
+            row
+            aria-label="destination"
+            name="destination"
+            value={formik.values.destination}
+            onChange={formik.handleChange}
+          >
+            <FormControlLabel value="dynamodb" control={<Radio />} label={"Dynamo DB"} />
+            <FormControlLabel value="s3" control={<Radio />} label={"S3"} />
+          </RadioGroup>
+        </FormControl>
+
+        {formik.values.destination === 's3' && (
+          <TextField
+          label="S3 Bucket"
+          margin="normal"
+          required
+          fullWidth
+          id="s3BucketName"
+          name="s3BucketName"
+          value={formik.values.s3BucketName}
+          onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.destination === 's3' && (
+          <TextField
+          label="S3 File Key"
+          margin="normal"
+          required
+          fullWidth
+          id="s3FileKey"
+          name="s3FileKey"
+          value={formik.values.s3FileKey}
+          onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.destination === 's3' && (
+          <TextField
+          label="S3 Region"
+          margin="normal"
+          required
+          fullWidth
+          id="s3Region"
+          name="s3Region"
+          value={formik.values.s3Region}
+          onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.destination === 'dynamodb' && (
+          <TextField
+          label="Dynamo DB Table Name"
+          margin="normal"
+          required
+          fullWidth
+          id="dynamoDBTableName"
+          name="dynamoDBTableName"
+          value={formik.values.dynamoDBTableName}
+          onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.destination === 'dynamodb' && (
+          <TextField
+          label="Dynamo DB Region"
+          margin="normal"
+          required
+          fullWidth
+          id="dynamoDBRegion"
+          name="dynamoDBRegion"
+          value={formik.values.dynamoDBRegion}
+          onChange={formik.handleChange}
+          />
+        )}
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose}>{t("common.cancel")}</Button>

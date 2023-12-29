@@ -128,7 +128,7 @@ const DeviceRow = ({
 
   const handleDelete = () => {
     handleCloseActions();
-    onDelete([device.id]);
+    onDelete([device.deviceId]);
   };
 
   const handleEdit = () => {
@@ -140,7 +140,7 @@ const DeviceRow = ({
     <TableRow
       aria-checked={selected}
       tabIndex={-1}
-      key={device.id}
+      key={device.deviceId}
       selected={selected}
       sx={{ "& td": { bgcolor: "background.paper", border: 0 } }}
     >
@@ -154,7 +154,7 @@ const DeviceRow = ({
           inputProps={{
             "aria-labelledby": labelId,
           }}
-          onClick={() => onCheck(device.id)}
+          onClick={() => onCheck(device.deviceId)}
         />
       </TableCell>
       <TableCell>
@@ -164,21 +164,21 @@ const DeviceRow = ({
           </Avatar>
           <Box>
             <Typography component="div" variant="h6">
-              {`${device.deviceTemplate} ${device.deviceName}`}
+              {`${device.deviceId} ${device.deviceId}`}
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              {device.localFilePath}
+              {device.deviceId}
             </Typography>
           </Box>
         </Box>
       </TableCell>
-      <TableCell align="center">{device.destination}</TableCell>
-      <TableCell align="center">{device.deviceType}</TableCell>
+      <TableCell align="center">{device.deviceId}</TableCell>
+      <TableCell align="center">{device.source}</TableCell>
       <TableCell align="center">
-        {device.disabled ? (
-          <Chip label="Disabled" />
+        {device.source ? (
+          <Chip label="http" />
         ) : (
-          <Chip color="primary" label="Active" />
+          <Chip color="primary" label="mqtts" />
         )}
       </TableCell>
       <TableCell
@@ -302,12 +302,12 @@ const DeviceTable = ({
               .map((device, index) => (
                 <DeviceRow
                   index={index}
-                  key={device.id}
+                  key={device.deviceId}
                   onCheck={handleClick}
                   onDelete={onDelete}
                   onEdit={onEdit}
                   processing={processing}
-                  selected={isSelected(device.id)}
+                  selected={isSelected(device.deviceId)}
                   device={device}
                 />
               ))}
