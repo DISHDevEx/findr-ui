@@ -15,7 +15,7 @@ WORKDIR /app
 RUN rm -rf node_modules package-lock.json
 
 # Copy package.json and yarn.lock and node_modules to the container
-COPY package*.json yarn.lock ./
+COPY package*.json yarn.lock tsconfig.json ./
 
 # Set yarn configuration
 RUN yarn config set "strict-ssl" false -g
