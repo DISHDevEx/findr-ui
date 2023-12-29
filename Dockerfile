@@ -8,7 +8,6 @@ FROM node:14-alpine
 # Create a symlink for yarn and add it to the PATH
 RUN ln -s "$(npm bin --global)/yarn" /usr/local/bin/yarn
 
-
 # Set the working directory to app
 WORKDIR /app
 
@@ -52,7 +51,7 @@ ADD . .
 EXPOSE 7000
 
 # Add yarn to the PATH
-export PATH="$PATH:/usr/local/bin/yarn"
+RUN ln -s "$(npm bin --global)/yarn" /usr/local/bin/yarn
 
 # Start Nginx to serve the application
 CMD ["yarn", "run", "start"]
