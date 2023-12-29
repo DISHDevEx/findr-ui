@@ -4,9 +4,6 @@ FROM node:14-alpine
 # Install Yarn globally
 #RUN npm install -g yarn --force
 
-# Add yarn to the PATH
-# Create a symlink for yarn and add it to the PATH
-RUN ln -s "$(npm bin --global)/yarn" /usr/local/bin/yarn
 
 # Set the working directory to app
 WORKDIR /app
@@ -27,6 +24,8 @@ RUN yarn config set "strict-ssl" false -g
 RUN yarn install
 RUN yarn cache clean
 
+# Add Yarn to the PATH
+RUN ENV PATH="/app/node_modules/.bin:${PATH}"
 
 # Set NODE_OPTIONS
 RUN export NODE_OPTIONS="--openssl-legacy-provider"
@@ -50,8 +49,6 @@ ADD . .
 # Expose port 7000
 EXPOSE 7000
 
-# Add yarn to the PATH
-RUN ln -s "$(npm bin --global)/yarn" /usr/local/bin/yarn
 
 # Start Nginx to serve the application
 CMD ["yarn", "run", "start"]
