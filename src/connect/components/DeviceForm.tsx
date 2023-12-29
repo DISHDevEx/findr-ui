@@ -98,7 +98,7 @@ const DeviceForm = ({
          alert('Successfully registered device!');  
       })
       .catch(function (error) {
-        console.log(error.toJSON());
+        console.log(JSON.stringify(error));
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
