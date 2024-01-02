@@ -61,6 +61,6 @@ mock.onPut("/api/devices").reply(({ data }) => [200, data]);
 
 // Oracle
 mock
-  .onPost("https://afd0e01f0d9594dc5adbd0350e4454c7-1214440607.us-east-1.elb.amazonaws.com:9000/oracle")
+  .onPost("http://afd0e01f0d9594dc5adbd0350e4454c7-1214440607.us-east-1.elb.amazonaws.com:9000/oracle")
   .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
-  mock.onPost("/oracle").reply(200);
+mock.onPost("/oracle").reply(200);
