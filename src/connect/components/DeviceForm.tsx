@@ -68,7 +68,7 @@ const DeviceForm = ({
   const editMode = Boolean(device && device.deviceId);
 
   const handleSubmit1 = (values: Partial<Device>) => {
-    mock.reset();
+    // mock.reset();
     mock.restore();
     console.log("handling submit1");
     console.log(values);
