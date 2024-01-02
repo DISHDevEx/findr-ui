@@ -420,9 +420,9 @@ const DeviceForm = ({
         > 
           {t("Submit")}
         </Button>
-         <LoadingButton loading={processing} type="submit" variant="contained">
+         {/* <LoadingButton loading={processing} type="submit" variant="contained">
             <span>Add</span>
-        </LoadingButton> 
+        </LoadingButton>  */}
     </form>
   </Box>
   );
