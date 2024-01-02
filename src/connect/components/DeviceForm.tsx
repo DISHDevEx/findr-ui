@@ -87,7 +87,7 @@ const DeviceForm = ({
   
   
   const handleSubmit = (values: Partial<Device>) => {
-    mock.reset();
+    //mock.reset();
     mock.restore();
     console.log("handling submit");
     console.log(values);
