@@ -150,7 +150,7 @@ const DeviceForm = ({
         .required(t("common.validations.required")),
       destination: Yup.string().required(t("common.validations.required")),
     }),
-    onSubmit: handleSubmit1,
+    onSubmit: handleSubmit,
   });
 
   return (
