@@ -17,12 +17,16 @@ import * as Yup from "yup";
 import React, { useState } from 'react';
 import { Device } from "../types/device";
 import PublishIcon from '@mui/icons-material/Publish';
-import { useSettings } from "../../core/contexts/SettingsProvider";
-import { ReactComponent as S3Svg } from "../assets/amazon-s3.svg";
-import { ReactComponent as DynamoSvg } from "../assets/aws-dynamodb.svg";
-import { ReactComponent as MqttSvg } from "../assets/mqtt_logo.svg";
-import { ReactComponent as HttpSvg } from "../assets/http_logo.svg";
+import Grid from '@mui/material/Grid';
+import { ReactComponent as S3Svg } from "../assets/aws_s3_md.svg";
+import { ReactComponent as DynamoSvg } from "../assets/dynamo_db_md.svg";
+import { ReactComponent as MqttSvg } from "../assets/mqtt_md.svg";
+import { ReactComponent as HttpSvg } from "../assets/http_md.svg";
 import { mock } from "../../mocks/server";
+import Typography from '@mui/material/Typography';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import './mycomponent.css'; 
 
 const destinations = [
   { label: "deviceManagement.form.destination.options.s", value: "s3" },
@@ -36,14 +40,6 @@ const sources = [
 ];
 
 const deviceTypes = ["Sensor", "Camera"];
-
-const useStyles = makeStyles({
-  radio: {
-    '& .MuiSvgIcon-root': {
-      display: 'none', // Hide the default radio button icon
-    },
-  },
-});
 
 type DeviceFormProps = {
   onAdd: (device: Partial<Device>) => void;
@@ -118,23 +114,18 @@ const DeviceForm = ({
         console.log(error.config);
       });
   };
-  
+
 
   const formik = useFormik({
     initialValues: {
-      // disabled: device ? device.disabled : false,
-      //localFilePath: device ? device.localFilePath : "",
       deviceId: device ? device.deviceId : "",
-      source: device ? device.source : "mqtts",
+      source: device ? device.source : "http",
       destination: device ? device.destination : "s3",
-      // deviceTemplate: device ? device.deviceTemplate : "",
-      // deviceType: device ? device.deviceType : "",
       httpPortNumber: device ? device.httpPortNumber : "",
       httpRoute: device ? device.httpRoute : "",
       mqttsBroker: device ? device.mqttsBroker : "",
       topic: device ? device.topic : "",
       clientId: device ? device.clientId : "",
-      //caFilePath: device ? device.caFilePath : "",
       s3BucketName: device ? device.s3BucketName : "",
       s3Region: device ? device.s3Region : "",
       s3FileKey: device ? device.s3FileKey : "",
@@ -153,6 +144,18 @@ const DeviceForm = ({
     onSubmit: handleSubmit,
   });
 
+  const handleSourceChange = (event: React.MouseEvent<HTMLElement>, newValue: string | null) => {
+    if (newValue !== null) {
+      formik.setFieldValue('source', newValue);
+    }
+  };
+
+  const handleDestinationChange = (event: React.MouseEvent<HTMLElement>, newValue: string | null) => {
+    if (newValue !== null) {
+      formik.setFieldValue('destination', newValue);
+    }
+  };
+
   return (
       <Box
       sx={{
@@ -164,21 +167,6 @@ const DeviceForm = ({
       }}
     >
       <form onSubmit={formik.handleSubmit} noValidate>
-        {/* <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="deviceTemplate"
-          label={t("deviceManagement.form.deviceTemplate.label")}
-          name="deviceTemplate"
-          autoComplete="family-name"
-          autoFocus
-          disabled={processing}
-          value={formik.values.deviceTemplate}
-          onChange={formik.handleChange}
-          error={formik.touched.deviceTemplate && Boolean(formik.errors.deviceTemplate)}
-          helperText={formik.touched.deviceTemplate && formik.errors.deviceTemplate}
-        /> */}
         <TextField
           margin="normal"
           required
@@ -193,34 +181,38 @@ const DeviceForm = ({
           error={formik.touched.deviceId && Boolean(formik.errors.deviceId)}
           helperText={formik.touched.deviceId && formik.errors.deviceId}
         />
-        {/* <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="localFilePath"
-          label={t("deviceManagement.form.localFilePath.label")}
-          name="localFilePath"
-          autoComplete="localFilePath"
-          disabled={processing}
-          value={formik.values.localFilePath}
-          onChange={formik.handleChange}
-          error={formik.touched.localFilePath && Boolean(formik.errors.localFilePath)}
-          helperText={formik.touched.localFilePath && formik.errors.localFilePath}
-        /> */}
         <FormControl component="fieldset" margin="normal">
           <FormLabel component="legend">
             {t("deviceManagement.form.source.label")}
           </FormLabel>
-          <RadioGroup
-            row
-            aria-label="source"
-            name="source"
+            <ToggleButtonGroup
+            orientation="horizontal"
             value={formik.values.source}
-            onChange={formik.handleChange}
+            exclusive
+            onChange={handleSourceChange}
+            aria-label="source"
           >
-            <FormControlLabel value="http" control={<Radio />} label={<HttpSvg style={{ maxWidth: 220, width: "100%" }} />} />
-            <FormControlLabel value="mqtts" control={<Radio />} label={<MqttSvg style={{ maxWidth: 200, width: "100%" }} />} />
-          </RadioGroup>
+            <ToggleButton value="http" aria-label="http" className="custom-toggle-button" >
+              <Grid container direction="column" alignItems="center">
+                  <Grid item>
+                    <HttpSvg />
+                  </Grid>
+                  <Grid item>
+                    <Typography>HTTP</Typography>
+                  </Grid>
+                </Grid>
+            </ToggleButton>
+            <ToggleButton value="mqtts" aria-label="mqtts" className="custom-toggle-button">
+              <Grid container direction="column" alignItems="center">
+                    <Grid item>
+                      <MqttSvg />
+                    </Grid>
+                    <Grid item>
+                      <Typography>MQTT</Typography>
+                    </Grid>
+                  </Grid>
+            </ToggleButton>
+          </ToggleButtonGroup>
         </FormControl>
 
         {formik.values.source === 'http' && (
@@ -288,34 +280,38 @@ const DeviceForm = ({
           />
         )}
 
-        {/* {formik.values.source === 'mqtts' && (
-            <TextField
-              label="Ca File Path"
-              margin="normal"
-              required
-              fullWidth
-              id="caFilePath"
-              name="caFilePath"
-              value={formik.values.caFilePath}
-              onChange={formik.handleChange}
-            />
-          )} */}
-
-
         <FormControl component="fieldset" margin="normal">
           <FormLabel component="legend">
             {t("deviceManagement.form.destination.label")}
           </FormLabel>
-          <RadioGroup
-            row
-            aria-label="destination"
-            name="destination"
-            value={formik.values.destination}
-            onChange={formik.handleChange}
-          >
-            <FormControlLabel value="dynamodb" control={<Radio />} label={<DynamoSvg style={{ maxWidth: 200, width: "100%" }} />} />
-            <FormControlLabel value="s3" control={<Radio />} label={<S3Svg style={{ maxWidth: 300, width: "100%" }} />} />
-          </RadioGroup>
+            <ToggleButtonGroup
+              orientation="horizontal"
+              value={formik.values.destination}
+              exclusive
+              onChange={handleDestinationChange}
+              aria-label="destination"
+            >
+              <ToggleButton value="dynamodb" aria-label="dynamodb" className="custom-toggle-button">
+                <Grid container direction="column" alignItems="center">
+                    <Grid item>
+                      <DynamoSvg />
+                    </Grid>
+                    <Grid item>
+                      <Typography>Dynamo DB</Typography>
+                    </Grid>
+                  </Grid>
+              </ToggleButton>
+              <ToggleButton value="s3" aria-label="s3"  className="custom-toggle-button">
+                <Grid container direction="column" alignItems="center">
+                      <Grid item>
+                        <S3Svg />
+                      </Grid>
+                      <Grid item>
+                        <Typography>S3</Typography>
+                      </Grid>
+                    </Grid>
+              </ToggleButton>
+            </ToggleButtonGroup>
         </FormControl>
 
         {formik.values.destination === 's3' && (
@@ -420,9 +416,6 @@ const DeviceForm = ({
         > 
           {t("Submit")}
         </Button>
-         {/* <LoadingButton loading={processing} type="submit" variant="contained">
-            <span>Add</span>
-        </LoadingButton>  */}
     </form>
   </Box>
   );

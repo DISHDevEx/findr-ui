@@ -164,16 +164,16 @@ const DeviceRow = ({
           </Avatar>
           <Box>
             <Typography component="div" variant="h6">
-              {`${device.deviceId} ${device.deviceId}`}
+              {`${device.deviceId}`}
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              {device.deviceId}
+              {device.source}
             </Typography>
           </Box>
         </Box>
       </TableCell>
-      <TableCell align="center">{device.deviceId}</TableCell>
-      <TableCell align="center">{device.source}</TableCell>
+      <TableCell align="center">{device.destination}</TableCell>
+      <TableCell align="center">{device.destination}</TableCell>
       <TableCell align="center">
         {device.source ? (
           <Chip label="http" />

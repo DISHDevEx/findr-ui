@@ -6,24 +6,24 @@ aria-label="Amazon Simple Storage Service" role="img"
 viewBox="0 0 512 512">
 
 <rect
-width="110%" height="110%"
+width="10%" height="10%"
 rx="15%"
 fill=none/>
 
-<path fill="#919191" d="M260 348l-137 33V131l137 32z"/>
+<path fill="currentColor" d="M260 348l-137 33V131l137 32z"/>
 
-<path fill="#575757" d="M256 349l133 32V131l-133 32v186"/>
+<path fill="currentColor" d="M256 349l133 32V131l-133 32v186"/>
 
-<g fill="#919191">
+<g fill="currentColor">
 
 <path id="a" d="M256 64v97l58 14V93zm133 67v250l26-13V143zm-133 77v97l58-8v-82zm58 129l-58 14v97l58-29z"/>
 
 </g>
 
-<use fill="#575757" transform="rotate(180 256 256)" xlink:href="#a"/>
+<use fill="currentColor" transform="rotate(180 256 256)" xlink:href="#a"/>
 
-<path fill="#3b3b3b" d="M314 175l-58 11-58-11 58-15 58 15"/>
+<path fill="currentColor" d="M314 175l-58 11-58-11 58-15 58 15"/>
 
-<path fill="#cdcdcd" d="M314 337l-58-11-58 11 58 16 58-16"/>
+<path fill="currentColor" d="M314 337l-58-11-58 11 58 16 58-16"/>
 
 </svg>
