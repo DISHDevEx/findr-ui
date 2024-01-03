@@ -6,7 +6,7 @@ type LogoProps = {
   size?: number;
 } & BoxProps;
 
-const Logo = ({ colored = false, size = 100, ...boxProps }: LogoProps) => {
+const Logo = ({ colored = false, size = 200, ...boxProps }: LogoProps) => {
   return (
     <Box {...boxProps}>
       <LogoSvg height={size} width={size} />

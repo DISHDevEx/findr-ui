@@ -39,8 +39,6 @@ const sources = [
   { label: "deviceManagement.form.source.options.m", value: "mqtts" },
 ];
 
-const deviceTypes = ["Sensor", "Camera"];
-
 type DeviceFormProps = {
   onAdd: (device: Partial<Device>) => void;
   onClose: () => void;
@@ -61,7 +59,6 @@ const DeviceForm = ({
 }: DeviceFormProps) => {
   const { t } = useTranslation();
 
-  const editMode = Boolean(device && device.deviceId);
 
   const handleSubmit1 = (values: Partial<Device>) => {
     // mock.reset();

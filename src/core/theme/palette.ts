@@ -43,7 +43,7 @@ export const darkPalette = {
   },
   text: {
     primary: palette.grey[100],
-    secondary: palette.grey[300],
+    secondary: palette.grey[400],
     disabled: palette.grey[600],
   },
   divider: palette.grey[600],
