@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse, AxiosError } from "axios";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import FormControl from "@material-ui/core/FormControl";
@@ -23,6 +23,8 @@ import Typography from '@mui/material/Typography';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import './mycomponent.css'; 
+
+
 
 const oracleURL: string | undefined = process.env.REACT_APP_ORACLE_URL;
 
@@ -118,6 +120,51 @@ const DeviceForm = ({
       });
   };
 
+  const handleSubmit_async = async (values: Partial<Device>): Promise<void> => {
+    try {
+      // mock.reset();
+      mock.restore();
+  
+      console.log("handling submit");
+      console.log(values);
+      console.log(JSON.stringify(values));
+  
+      // Make the POST request and await the response
+      const res: AxiosResponse = await findrapi.post("/oracle", values);
+  
+      // Log the response and notify the user
+      console.log(res);
+      alert('Successfully registered device!');
+    } catch (error) {
+      // Handle errors
+      console.log(JSON.stringify(error));
+  
+      if (axios.isAxiosError(error)) {
+        // AxiosError-specific handling
+        const axiosError: AxiosError = error;
+  
+        if (axiosError.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(axiosError.response.data);
+          console.log(axiosError.response.status);
+          console.log(axiosError.response.headers);
+        } else if (axiosError.request) {
+          // The request was made but no response was received
+          // `axiosError.request` is an instance of XMLHttpRequest in the browser
+          // and an instance of http.ClientRequest in node.js
+          console.log(axiosError.request);
+        }
+      } else {
+        // Generic error handling for other types of errors
+        console.log('Error', error.message);
+      }
+  
+      console.log(error.config);
+    }
+  };
+
+
 
   const formik = useFormik({
     initialValues: {
@@ -144,7 +191,7 @@ const DeviceForm = ({
         .required(t("common.validations.required")),
       destination: Yup.string().required(t("common.validations.required")),
     }),
-    onSubmit: handleSubmit,
+    onSubmit: handleSubmit_async,
   });
 
   const handleSourceChange = (event: React.MouseEvent<HTMLElement>, newValue: string | null) => {
@@ -415,7 +462,7 @@ const DeviceForm = ({
           variant="contained" 
           type="submit"
           endIcon={<PublishIcon />}
-          // onClick={() => onAdd}
+          onClick={() => handle}
         > 
           {t("Submit")}
         </Button>

@@ -36,8 +36,8 @@ RUN export NODE_OPTIONS="--openssl-legacy-provider"
 # Copy the content of the local src directory to the working directory
 COPY . ./
 
-# Expose port 7000
-EXPOSE 7000
+# Expose port 7001
+EXPOSE 7001
 
 # Start Nginx to serve the application
 CMD ["yarn", "run", "start"]
