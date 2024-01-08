@@ -1,16 +1,12 @@
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import Checkbox from "@material-ui/core/Checkbox";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from '@material-ui/styles';
 import MenuItem from "@material-ui/core/MenuItem";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
 import TextField from "@material-ui/core/TextField";
-import LoadingButton from "@material-ui/lab/LoadingButton";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
@@ -27,6 +23,8 @@ import Typography from '@mui/material/Typography';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import './mycomponent.css'; 
+
+const oracleURL: string | undefined = process.env.REACT_APP_ORACLE_URL;
 
 const destinations = [
   { label: "deviceManagement.form.destination.options.s", value: "s3" },
@@ -81,9 +79,9 @@ const DeviceForm = ({
 
   
     const findrapi = axios.create({
-      baseURL: 'http://a05259ad89ee04b01a459befbd933615-1815840413.us-east-1.elb.amazonaws.com:9000',
+      baseURL: "http://a05259ad89ee04b01a459befbd933615-1815840413.us-east-1.elb.amazonaws.com:9000",
       timeout: 2000,
-      headers: {"Access-Control-Allow-Origin": "*"}
+      headers: {'Content-Type': 'application/json'}
       //'Content-Type': 'application/json', 
     });
   
