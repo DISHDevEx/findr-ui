@@ -1,0 +1,13 @@
+import axios from "axios";
+import { mock } from "../../mocks/server";
+import { useQuery } from "react-query";
+import { ActivityLog } from "../types/activityLog";
+
+const fetchActivityLogs = async (): Promise<ActivityLog[]> => {
+  const { data } = await mock.get("/api/activity-logs");
+  return data;
+};
+
+export function useActivityLogs() {
+  return useQuery("activity-logs", () => fetchActivityLogs());
+}

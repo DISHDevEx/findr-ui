@@ -1,0 +1,6 @@
+/* MyComponent.css */
+
+.custom-toggle-button {
+    background-color: inherit !important; /* Use !important to override Material-UI styles */
+  }
+  

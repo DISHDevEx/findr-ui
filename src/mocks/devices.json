@@ -1,0 +1,62 @@
+[
+  {
+      "deviceId": "1",
+      "destination": "s3",
+      "source": "mqtts",
+      "mqttsBroker": "string",
+      "topic": "string",
+      "clientId": "string",
+      "httpPortNumber": "string",
+      "httpRoute": "string",
+      "s3BucketName": "string",
+      "s3Region": "string",
+      "s3FileKey": "string",
+      "dynamoDBTableName": "string",
+      "dynamoDBRegion": "string"
+    },
+  {
+      "deviceId": "2",
+      "destination": "dynamodb",
+      "source": "http",
+      "mqttsBroker": "string",
+      "topic": "string",
+      "clientId": "string",
+      "httpPortNumber": "string",
+      "httpRoute": "string",
+      "s3BucketName": "string",
+      "s3Region": "string",
+      "s3FileKey": "string",
+      "dynamoDBTableName": "string",
+      "dynamoDBRegion": "string"
+  },
+  {
+      "deviceId": "3",
+      "destination": "s3",
+      "source": "mqtts",
+      "mqttsBroker": "string",
+      "topic": "string",
+      "clientId": "string",
+      "httpPortNumber": "string",
+      "httpRoute": "string",
+      "s3BucketName": "string",
+      "s3Region": "string",
+      "s3FileKey": "string",
+      "dynamoDBTableName": "string",
+      "dynamoDBRegion": "string"
+  },
+  {
+      "deviceId": "4",
+      "destination": "dynamodb",
+      "source": "http",
+      "mqttsBroker": "string",
+      "topic": "string",
+      "clientId": "string",
+      "httpPortNumber": "string",
+      "httpRoute": "string",
+      "s3BucketName": "string",
+      "s3Region": "string",
+      "s3FileKey": "string",
+      "dynamoDBTableName": "string",
+      "dynamoDBRegion": "string"
+  }
+]
