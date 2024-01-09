@@ -477,7 +477,7 @@ const DeviceForm = ({
           variant="contained" 
           type="submit"
           endIcon={<PublishIcon />}
-          onClick={() => handle}
+          ///onClick={() => handle}
         > 
           {t("Submit")}
         </Button>
