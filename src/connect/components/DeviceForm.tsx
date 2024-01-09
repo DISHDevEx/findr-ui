@@ -181,6 +181,7 @@ const DeviceForm = ({
       s3FileKey: device ? device.s3FileKey : "",
       dynamoDBTableName: device ? device.dynamoDBTableName : "",
       dynamoDBRegion: device ? device.dynamoDBRegion : "",
+      certificate: device ? device.certificate : "",
     },
     validationSchema: Yup.object({
       deviceId: Yup.string()
@@ -230,6 +231,20 @@ const DeviceForm = ({
           onChange={formik.handleChange}
           error={formik.touched.deviceId && Boolean(formik.errors.deviceId)}
           helperText={formik.touched.deviceId && formik.errors.deviceId}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="certificate"
+          label="certificate"
+          name="certificate"
+          //autoComplete="given-name"
+          disabled={processing}
+          value={formik.values.certificate}
+          onChange={formik.handleChange}
+          error={formik.touched.certificate && Boolean(formik.errors.certificate)}
+          helperText={formik.touched.certificate && formik.errors.certificate}
         />
         <FormControl component="fieldset" margin="normal">
           <FormLabel component="legend">

@@ -12,4 +12,5 @@ export interface Device {
   s3FileKey: string;
   dynamoDBTableName: string;
   dynamoDBRegion: string;
+  certificate: string;
 }
