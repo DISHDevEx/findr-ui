@@ -10,7 +10,7 @@ export interface Device {
   s3BucketName: string;
   s3Region: string;
   s3FileKey: string;
-  dynamoDBTableName: string;
-  dynamoDBRegion: string;
+  dynamodbTableName: string;
+  dynamodbRegion: string;
   certificate: string;
 }

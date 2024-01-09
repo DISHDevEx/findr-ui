@@ -179,8 +179,8 @@ const DeviceForm = ({
       s3BucketName: device ? device.s3BucketName : "",
       s3Region: device ? device.s3Region : "",
       s3FileKey: device ? device.s3FileKey : "",
-      dynamoDBTableName: device ? device.dynamoDBTableName : "",
-      dynamoDBRegion: device ? device.dynamoDBRegion : "",
+      dynamodbTableName: device ? device.dynamodbTableName : "",
+      dynamodbRegion: device ? device.dynamodbRegion : "",
       certificate: device ? device.certificate : "",
     },
     validationSchema: Yup.object({
@@ -424,9 +424,9 @@ const DeviceForm = ({
           margin="normal"
           required
           fullWidth
-          id="dynamoDBTableName"
-          name="dynamoDBTableName"
-          value={formik.values.dynamoDBTableName}
+          id="dynamodbTableName"
+          name="dynamodbTableName"
+          value={formik.values.dynamodbTableName}
           onChange={formik.handleChange}
           />
         )}
@@ -437,9 +437,9 @@ const DeviceForm = ({
           margin="normal"
           required
           fullWidth
-          id="dynamoDBRegion"
-          name="dynamoDBRegion"
-          value={formik.values.dynamoDBRegion}
+          id="dynamodbRegion"
+          name="dynamodbRegion"
+          value={formik.values.dynamodbRegion}
           onChange={formik.handleChange}
           />
         )}
