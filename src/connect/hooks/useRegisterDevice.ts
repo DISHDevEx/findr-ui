@@ -6,7 +6,7 @@ import { mock } from "../../mocks/server";
 
 const registerDevice = async (device: Device): Promise<Device> => {
   mock.restore();
-  const { data } = await axios.post("http://a193a59270f054632b122812df0d5ac3-1193284028.us-east-1.elb.amazonaws.com:9000/oracle", device);
+  const { data } = await axios.post("http://a52c356e9b4b540c59d2c7db947ace25-1368697784.us-east-1.elb.amazonaws.com/oracle", device);
   return data;
 };
 
