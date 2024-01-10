@@ -173,6 +173,9 @@ const DeviceForm = ({
       destination: device ? device.destination : "s3",
       httpPortNumber: device ? device.httpPortNumber : "",
       httpRoute: device ? device.httpRoute : "",
+      httpIp: device ? device.httpIp : "",
+      httpResponseKey: device ? device.httpResponseKey : "",
+      httpRequestInterval: device ? device.httpRequestInterval : "",
       mqttsBroker: device ? device.mqttsBroker : "",
       topic: device ? device.topic : "",
       clientId: device ? device.clientId : "",
@@ -302,6 +305,45 @@ const DeviceForm = ({
             id="httpRoute"
             name="httpRoute"
             value={formik.values.httpRoute}
+            onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.source === 'http' && (
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="HTTP IP"
+            id="httpIp"
+            name="httpIp"
+            value={formik.values.httpIp}
+            onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.source === 'http' && (
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="HTTP Response Key"
+            id="httpResponseKey"
+            name="httpResponseKey"
+            value={formik.values.httpResponseKey}
+            onChange={formik.handleChange}
+          />
+        )}
+
+        {formik.values.source === 'http' && (
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="HTTP Request Interval"
+            id="httpRequestInterval"
+            name="httpRequestInterval"
+            value={formik.values.httpRequestInterval}
             onChange={formik.handleChange}
           />
         )}

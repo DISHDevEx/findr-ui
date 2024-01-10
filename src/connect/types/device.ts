@@ -7,6 +7,9 @@ export interface Device {
   clientId: string;
   httpPortNumber: string;
   httpRoute: string;
+  httpIp: string;
+  httpResponseKey: string;
+  httpRequestInterval: string;
   s3BucketName: string;
   s3Region: string;
   s3FileKey: string;
