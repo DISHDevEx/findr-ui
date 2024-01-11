@@ -101,7 +101,7 @@ const DeviceForm = ({
         } 
       })
       .catch(function (error) {
-        alert('Error!')
+        alert('Error!');
         console.log(JSON.stringify(error));
         if (error.response) {
           // The request was made and the server responded with a status code
