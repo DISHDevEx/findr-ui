@@ -82,7 +82,6 @@ const DeviceForm = ({
   
     const findrapi = axios.create({
       baseURL: "http://3.95.191.132:30806",
-      timeout: 20000,
       headers: {'Content-Type': 'application/json'}
     });
   
@@ -125,8 +124,8 @@ const DeviceForm = ({
       // mock.reset();
       mock.restore();
   
-      console.log("handling submit");
-      console.log(values);
+      console.log("handling submit async");
+      console.log('values:', values);
       console.log(JSON.stringify(values));
   
       // Make the POST request and await the response
@@ -146,6 +145,7 @@ const DeviceForm = ({
         if (axiosError.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
+          console.log("The request was made and the server responded with a status code that falls out of the range of 2xx:");
           console.log(axiosError.response.data);
           console.log(axiosError.response.status);
           console.log(axiosError.response.headers);
@@ -153,14 +153,14 @@ const DeviceForm = ({
           // The request was made but no response was received
           // `axiosError.request` is an instance of XMLHttpRequest in the browser
           // and an instance of http.ClientRequest in node.js
-          console.log(axiosError.request);
+          console.log('The request was made but no response was received. axiosError.request is an instance of XMLHttpRequest in the browser and and an instance of http.ClientRequest in node.js:', axiosError.request);
         }
       } else {
         // Generic error handling for other types of errors
         console.log('Error', error.message);
       }
   
-      console.log(error.config);
+      console.log('Error config:', error.config);
     }
   };
 
