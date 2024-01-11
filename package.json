@@ -51,13 +51,13 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "build": "PORT=3000 react-scripts build",
+    "build": "PORT=7001 react-scripts build",
     "build:staging": "env-cmd -f .env.staging npm run build",
     "build:production": "env-cmd -f .env.production npm run build",
     "predeploy": "yarn run build:production",
     "deploy": "gh-pages -d build",
-    "start": "PORT=3000 react-scripts start",
-    "test": "PORT=3000 react-scripts test"
+    "start": "PORT=7001 react-scripts start",
+    "test": "PORT=7001 react-scripts test"
   },
   "eslintConfig": {
     "extends": [
