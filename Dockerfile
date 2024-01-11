@@ -37,6 +37,7 @@ RUN export NODE_OPTIONS="--openssl-legacy-provider"
 COPY . ./
 
 # Expose port 7001
+
 EXPOSE 3000
 
 # Start Nginx to serve the application
