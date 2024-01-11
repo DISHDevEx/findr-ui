@@ -222,7 +222,7 @@ const DeviceForm = ({
         mb: 3,
       }}
     >
-      <form onSubmit={formik.handleSubmit} noValidate>
+      <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit(e); }} noValidate>
         <TextField
           margin="normal"
           required
@@ -519,8 +519,9 @@ const DeviceForm = ({
         </FormControl> */}
         <Button 
           variant="contained" 
+          type='submit'
           endIcon={<PublishIcon />}
-          onClick={() => handleSubmit_async(formik.values)}
+          //onClick={() => handleSubmit_async(formik.values)}
         > 
           {t("Submit")}
         </Button>
