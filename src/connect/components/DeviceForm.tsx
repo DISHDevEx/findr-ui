@@ -96,9 +96,12 @@ const DeviceForm = ({
     findrapi.post("/oracle", values)
       .then(function (res) {
          console.log(res)
-         alert('Successfully registered device!');  
+         if (res.status === 200) {
+          alert('Successfully registered device!');
+        } 
       })
       .catch(function (error) {
+        alert('Error!')
         console.log(JSON.stringify(error));
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -135,9 +138,12 @@ const DeviceForm = ({
   
       // Log the response and notify the user
       console.log(res);
-      alert('Successfully registered device!');
+      if (res.status === 200) {
+        alert('Successfully registered device!');
+      }
     } catch (error) {
       // Handle errors
+      alert('Error!');
       console.log(JSON.stringify(error));
   
       if (axios.isAxiosError(error)) {
