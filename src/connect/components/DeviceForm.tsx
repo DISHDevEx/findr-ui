@@ -197,7 +197,7 @@ const DeviceForm = ({
         .required(t("common.validations.required")),
       destination: Yup.string().required(t("common.validations.required")),
     }),
-    onSubmit: handleSubmit_async,
+    onSubmit: handleSubmit,
   });
 
   const handleSourceChange = (event: React.MouseEvent<HTMLElement>, newValue: string | null) => {
