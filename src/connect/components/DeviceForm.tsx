@@ -122,6 +122,7 @@ const DeviceForm = ({
   const handleSubmit_async = async (values: Partial<Device>): Promise<void> => {
     try {
       // mock.reset();
+      
       mock.restore();
   
       console.log("handling submit async");
@@ -517,9 +518,8 @@ const DeviceForm = ({
         </FormControl> */}
         <Button 
           variant="contained" 
-          type="submit"
           endIcon={<PublishIcon />}
-          ///onClick={() => handle}
+          onClick={() => handleSubmit_async(formik.values)}
         > 
           {t("Submit")}
         </Button>
