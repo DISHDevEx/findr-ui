@@ -81,7 +81,7 @@ const DeviceForm = ({
 
   
     const findrapi = axios.create({
-      baseURL: "http://3.95.191.132:30806:9000",
+      baseURL: "http://3.95.191.132:30806",
       timeout: 10000,
       headers: {'Content-Type': 'application/json'}
     });
