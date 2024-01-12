@@ -88,13 +88,13 @@ const DeviceForm = ({
         if (response.status === 200) {
           alert('Successfully registered device!');
         }
-        const responseData = await response.json();
+        const responseData = await response;
         console.log('Response:', responseData);
 
 
       } else {
         alert('Error Response!');
-        const errorData = await JSON.stringify(response);
+        const errorData = await response;
         console.error('Error response:', errorData);
         // Handle the error response here
       }
