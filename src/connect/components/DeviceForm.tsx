@@ -83,11 +83,11 @@ const DeviceForm = ({
       });
   
       if (response.ok) {
-        const responseData = await response.json();
+        const responseData = await JSON.stringify(response);
         console.log('Response:', responseData);
         // Handle the successful response here
       } else {
-        const errorData = await response.json();
+        const errorData = await JSON.stringify(response);
         console.error('Error response:', errorData);
         // Handle the error response here
       }
