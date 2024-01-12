@@ -72,17 +72,37 @@ const DeviceForm = ({
     }
   };
 
-  // const addDevice = async (device: Device): Promise<Device> => {
-  //   mock.restore();
-  //   const { data } = await findrapi.post("/oracle", device);
-  //   return data;
-  // };
+  async function handleSubmit_fetch(values: Partial<Device>) {
+    try {
+      const response = await fetch(`http://3.95.191.132:30806/oracle`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Response:', responseData);
+        // Handle the successful response here
+      } else {
+        const errorData = await response.json();
+        console.error('Error response:', errorData);
+        // Handle the error response here
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle network errors or other exceptions here
+    }
+  };
+  
 
 
   
     const findrapi = axios.create({
       baseURL: "http://3.95.191.132:30806",
-      headers: {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"}
+      headers: {'Content-Type': 'application/json'}
     });
   
   
@@ -92,7 +112,7 @@ const DeviceForm = ({
     console.log("handling submit");
     console.log(values);
     console.log(JSON.stringify(values));
-    findrapi.post("/oracle", JSON.stringify(values))
+    findrapi.post("/oracle", values)
       .then(function (res) {
          console.log('res:', res)
          if (res.status === 200) {
@@ -100,7 +120,6 @@ const DeviceForm = ({
         } 
       })
       .catch(function (error) {
-        alert('Error!');
         console.log(JSON.stringify(error));
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -109,13 +128,21 @@ const DeviceForm = ({
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
+
+          if (error.response.status === 500 || error.response.status === 400) {
+            const errorMessage = `Error!: ${error.response.data}`;
+            alert(errorMessage);
+          }
+
         } else if (error.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
           // http.ClientRequest in node.js
+          alert('Error!');
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
+          alert('Error!');
           console.log('Error', error.message);
         }
         console.log(error.config);
@@ -202,7 +229,7 @@ const DeviceForm = ({
         .required(t("common.validations.required")),
       destination: Yup.string().required(t("common.validations.required")),
     }),
-    onSubmit: handleSubmit,
+    onSubmit: handleSubmit_fetch,
   });
 
   const handleSourceChange = (event: React.MouseEvent<HTMLElement>, newValue: string | null) => {
