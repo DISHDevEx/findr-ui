@@ -82,7 +82,7 @@ const DeviceForm = ({
   
     const findrapi = axios.create({
       baseURL: "http://3.95.191.132:30806",
-      headers: {'Content-Type': 'application/json'}
+      headers: {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"}
     });
   
   
@@ -92,9 +92,9 @@ const DeviceForm = ({
     console.log("handling submit");
     console.log(values);
     console.log(JSON.stringify(values));
-    findrapi.post("/oracle", values)
+    findrapi.post("/oracle", JSON.stringify(values))
       .then(function (res) {
-         console.log(res)
+         console.log('res:', res)
          if (res.status === 200) {
           alert('Successfully registered device!');
         } 
