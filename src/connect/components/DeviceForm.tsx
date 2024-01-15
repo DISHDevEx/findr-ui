@@ -539,8 +539,8 @@ const DeviceForm = ({
           endIcon={<PublishIcon />}
           //onClick={() => handleSubmit_async(formik.values)}
         >  */}
-          {t("Submit")}
-        </Button>
+          {/* {t("Submit")}
+        </Button> */}
         <LoadingButton
           loading={loading}
           type='submit'
