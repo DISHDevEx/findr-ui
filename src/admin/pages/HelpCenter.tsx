@@ -33,7 +33,7 @@ const HelpCenter = () => {
         </SvgContainer>
       </Container>
       <Grid container spacing={2} sx={{ mt: 3 }}>
-        <Grid item xs={6} lg={3}>
+        {/* <Grid item xs={6} lg={3}>
           <Card>
             <CardActionArea disabled={true}>
               <CardHeader
@@ -62,7 +62,7 @@ const HelpCenter = () => {
               </CardContent>
             </CardActionArea>
           </Card>
-        </Grid>
+        </Grid> */}
         <Grid item xs={6} lg={3}>
           <Card>
             <CardActionArea

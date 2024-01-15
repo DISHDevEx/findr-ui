@@ -160,7 +160,7 @@ const AdminDrawer = ({
           <ListItem
           button
           component={NavLink}
-          to={`/${process.env.PUBLIC_URL}/under-construction`}
+          to={`/${process.env.PUBLIC_URL}/admin/documentation`}
         >
           <ListItemAvatar>
               <Avatar sx={{ color: "inherit", bgcolor: "transparent" }}>

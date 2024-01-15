@@ -40,7 +40,6 @@ const DeviceManagement = lazy(() => import("./devices/pages/DeviceManagement"));
 // Devices
 const Connect = lazy(() => import("./connect/pages/DeviceRegistration"));
 
-
 const AppRoutes = () => {
   return (
     <Routes basename={process.env.PUBLIC_URL}>
