@@ -82,7 +82,6 @@ const DeviceForm = ({
         body: JSON.stringify(values),
       });
       console.log("handling submit fetch");
-      console.log(response);
       console.log('values:',JSON.stringify(values));
 
       if (response.ok) {
@@ -92,8 +91,13 @@ const DeviceForm = ({
         const responseData = await response;
         console.log('Response:', responseData);
       }
+        else {
+          const errorMessage = `Error with response!: ${response.status} ${response.statusText}`;
+          alert(errorMessage);
+        }
     } catch (error: any) {
-        const errorMessage = `Error!: ${error.response.status} ${error.response.statusText}`;
+        console.log('Error:', error);
+        const errorMessage = `Error!: ${error.status} ${error.statusText}`;
         alert(errorMessage);
     }
   };
