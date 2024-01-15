@@ -25,9 +25,6 @@ import './mycomponent.css';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
-
-const oracleURL: string | undefined = process.env.REACT_APP_ORACLE_URL;
-
 const destinations = [
   { label: "deviceManagement.form.destination.options.s", value: "s3" },
   { label: "deviceManagement.form.destination.options.d", value: "dynamodb" },
@@ -59,9 +56,9 @@ const DeviceForm = ({
 }: DeviceFormProps) => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-
-
-
+  const oracle_node_port: string | undefined = process.env.REACT_APP_ORACLE_NODE_PORT;
+  const oracle_node_ip: string | undefined = process.env.REACT_APP_ORACLE_NODE_IP; //`http://3.95.191.132:30806/oracle`
+  const oracleURL: string = 'http://${oracle_node_ip}:${oracle_node_port}/oracle'
 
   // const handleMock = (values: Partial<Device>) => {
   //   if (device && device.deviceId) {
@@ -73,8 +70,12 @@ const DeviceForm = ({
 
   async function handleSubmit_fetch(values: Partial<Device>) {
     try {
+      if (!oracleURL) {
+        console.error('Oracle URL is not defined!');
+        return;}
       setLoading(true);
-      const response = await fetch(`http://3.95.191.132:30806/oracle`, {
+      console.log('Oracle URL:', oracleURL);
+      const response = await fetch(oracleURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
