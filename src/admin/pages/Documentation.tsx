@@ -4,10 +4,6 @@ import React from "react";
 import AdminAppBar from "../components/AdminAppBar";
 import AdminToolbar from "../components/AdminToolbar";
 import RecentNotifications from "../components/RecentNotifications";
-import AchievementWidget from "../widgets/AchievementWidget";
-import FollowersWidget from "../widgets/FollowersWidget";
-import PersonalTargetsWidget from "../widgets/PersonalTargetsWidget";
-import ViewsWidget from "../widgets/ViewsWidget";
 import WelcomeWidget from "../widgets/WelcomeWidget";
 
 
@@ -26,4 +22,4 @@ const Documentation = () => {
   );
 };
 
-export default Home;
+export default Documentation;
