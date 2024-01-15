@@ -2,7 +2,6 @@ import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import Box from "@material-ui/core/Box";
 import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from '@material-ui/styles';
 import MenuItem from "@material-ui/core/MenuItem";
@@ -104,7 +103,7 @@ const DeviceForm = ({
         }
     } catch (error: any) {
         console.log('Error:', error);
-        const errorMessage = `Error!: ${error.status} ${error.statusText}`;
+        const errorMessage = `Error!: ${error}`;
         alert(errorMessage);
     }
       finally {

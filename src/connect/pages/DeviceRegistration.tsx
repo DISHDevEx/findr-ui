@@ -39,7 +39,7 @@ const DeviceRegistration = () => {
     addDevice(device as Device)
       .then(() => {
         snackbar.success(
-          t("DeviceManagement.notifications.addSuccess", {
+          t("Added to Device Management", {
             device: `${device.deviceId}`,
           })
         );
