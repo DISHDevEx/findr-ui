@@ -1,5 +1,5 @@
-import axios, { AxiosResponse, AxiosError } from "axios";
 import Button from "@material-ui/core/Button";
+import LoadingButton from '@mui/lab/LoadingButton';
 import Box from "@material-ui/core/Box";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -23,6 +23,7 @@ import Typography from '@mui/material/Typography';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import './mycomponent.css'; 
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -58,22 +59,22 @@ const DeviceForm = ({
   device,
 }: DeviceFormProps) => {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
 
 
-  const handleSubmit1 = (values: Partial<Device>) => {
-    // mock.reset();
-    mock.restore();
-    console.log("handling submit1");
-    console.log(values);
-    if (device && device.deviceId) {
-      onUpdate({ ...values, id: device.deviceId } as Device);
-    } else {
-      onAdd(values);
-    }
-  };
+
+
+  // const handleMock = (values: Partial<Device>) => {
+  //   if (device && device.deviceId) {
+  //     onUpdate({ ...values, id: device.deviceId } as Device);
+  //   } else {
+  //     onAdd(values);
+  //   }
+  // };
 
   async function handleSubmit_fetch(values: Partial<Device>) {
     try {
+      setLoading(true);
       const response = await fetch(`http://3.95.191.132:30806/oracle`, {
         method: 'POST',
         headers: {
@@ -87,6 +88,12 @@ const DeviceForm = ({
       if (response.ok) {
         if (response.status === 200) {
           alert('Successfully registered device!');
+          //handleMock
+          if (device && device.deviceId) {
+            onUpdate({ ...values, id: device.deviceId } as Device);
+          } else {
+            onAdd(values);
+          }
         }
         const responseData = await response;
         console.log('Response:', responseData);
@@ -100,108 +107,111 @@ const DeviceForm = ({
         const errorMessage = `Error!: ${error.status} ${error.statusText}`;
         alert(errorMessage);
     }
-  };
-  
-
-
-  
-    const findrapi = axios.create({
-      baseURL: "http://3.95.191.132:30806",
-      headers: {'Content-Type': 'application/json'}
-    });
-  
-  
-  const handleSubmit = (values: Partial<Device>) => {
-    //mock.reset();
-    mock.restore();
-    console.log("handling submit");
-    console.log(values);
-    console.log(JSON.stringify(values));
-    findrapi.post("/oracle", values)
-      .then(function (res) {
-         console.log('res:', res)
-         if (res.status === 200) {
-          alert('Successfully registered device!');
-        } 
-      })
-      .catch(function (error) {
-        console.log(JSON.stringify(error));
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.log(error.toJSON());
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-
-          if (error.response.status === 500 || error.response.status === 400) {
-            const errorMessage = `Error!: ${error.response.data}`;
-            alert(errorMessage);
-          }
-
-        } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
-          alert('Error!');
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          alert('Error!');
-          console.log('Error', error.message);
-        }
-        console.log(error.config);
-      });
-  };
-
-  const handleSubmit_async = async (values: Partial<Device>): Promise<void> => {
-    try {
-      // mock.reset();
-      
-      mock.restore();
-  
-      console.log("handling submit async");
-      console.log('values:', values);
-      console.log(JSON.stringify(values));
-  
-      // Make the POST request and await the response
-      const res: AxiosResponse = await findrapi.post("/oracle", values);
-  
-      // Log the response and notify the user
-      console.log(res);
-      if (res.status === 200) {
-        alert('Successfully registered device!');
-      }
-    } catch (error) {
-      // Handle errors
-      alert('Error!');
-      console.log(JSON.stringify(error));
-  
-      if (axios.isAxiosError(error)) {
-        // AxiosError-specific handling
-        const axiosError: AxiosError = error;
-  
-        if (axiosError.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.log("The request was made and the server responded with a status code that falls out of the range of 2xx:");
-          console.log(axiosError.response.data);
-          console.log(axiosError.response.status);
-          console.log(axiosError.response.headers);
-        } else if (axiosError.request) {
-          // The request was made but no response was received
-          // `axiosError.request` is an instance of XMLHttpRequest in the browser
-          // and an instance of http.ClientRequest in node.js
-          console.log('The request was made but no response was received. axiosError.request is an instance of XMLHttpRequest in the browser and and an instance of http.ClientRequest in node.js:', axiosError.request);
-        }
-      } else {
-        // Generic error handling for other types of errors
-        console.log('Error', error.message);
-      }
-  
-      console.log('Error config:', error.config);
+      finally {
+        setLoading(false);
     }
   };
+  
+
+
+  
+    // const findrapi = axios.create({
+    //   baseURL: "http://3.95.191.132:30806",
+    //   headers: {'Content-Type': 'application/json'}
+    // });
+  
+  
+  // const handleSubmit = (values: Partial<Device>) => {
+  //   //mock.reset();
+  //   mock.restore();
+  //   console.log("handling submit");
+  //   console.log(values);
+  //   console.log(JSON.stringify(values));
+  //   findrapi.post("/oracle", values)
+  //     .then(function (res) {
+  //        console.log('res:', res)
+  //        if (res.status === 200) {
+  //         alert('Successfully registered device!');
+  //       } 
+  //     })
+  //     .catch(function (error) {
+  //       console.log(JSON.stringify(error));
+  //       if (error.response) {
+  //         // The request was made and the server responded with a status code
+  //         // that falls out of the range of 2xx
+  //         console.log(error.toJSON());
+  //         console.log(error.response.data);
+  //         console.log(error.response.status);
+  //         console.log(error.response.headers);
+
+  //         if (error.response.status === 500 || error.response.status === 400) {
+  //           const errorMessage = `Error!: ${error.response.data}`;
+  //           alert(errorMessage);
+  //         }
+
+  //       } else if (error.request) {
+  //         // The request was made but no response was received
+  //         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+  //         // http.ClientRequest in node.js
+  //         alert('Error!');
+  //         console.log(error.request);
+  //       } else {
+  //         // Something happened in setting up the request that triggered an Error
+  //         alert('Error!');
+  //         console.log('Error', error.message);
+  //       }
+  //       console.log(error.config);
+  //     });
+  // };
+
+  // const handleSubmit_async = async (values: Partial<Device>): Promise<void> => {
+  //   try {
+  //     // mock.reset();
+      
+  //     mock.restore();
+  
+  //     console.log("handling submit async");
+  //     console.log('values:', values);
+  //     console.log(JSON.stringify(values));
+  
+  //     // Make the POST request and await the response
+  //     const res: AxiosResponse = await findrapi.post("/oracle", values);
+  
+  //     // Log the response and notify the user
+  //     console.log(res);
+  //     if (res.status === 200) {
+  //       alert('Successfully registered device!');
+  //     }
+  //   } catch (error) {
+  //     // Handle errors
+  //     alert('Error!');
+  //     console.log(JSON.stringify(error));
+  
+  //     if (axios.isAxiosError(error)) {
+  //       // AxiosError-specific handling
+  //       const axiosError: AxiosError = error;
+  
+  //       if (axiosError.response) {
+  //         // The request was made and the server responded with a status code
+  //         // that falls out of the range of 2xx
+  //         console.log("The request was made and the server responded with a status code that falls out of the range of 2xx:");
+  //         console.log(axiosError.response.data);
+  //         console.log(axiosError.response.status);
+  //         console.log(axiosError.response.headers);
+  //       } else if (axiosError.request) {
+  //         // The request was made but no response was received
+  //         // `axiosError.request` is an instance of XMLHttpRequest in the browser
+  //         // and an instance of http.ClientRequest in node.js
+  //         console.log('The request was made but no response was received. axiosError.request is an instance of XMLHttpRequest in the browser and and an instance of http.ClientRequest in node.js:', axiosError.request);
+  //       }
+  //     } else {
+  //       // Generic error handling for other types of errors
+  //       console.log('Error', error.message);
+  //     }
+  
+  //     console.log('Error config:', error.config);
+  //   }
+  // };
 
 
 
@@ -524,36 +534,6 @@ const DeviceForm = ({
           onChange={formik.handleChange}
           />
         )}
-        {/* <TextField
-          margin="normal"
-          required
-          id="deviceType"
-          disabled={processing}
-          fullWidth
-          select
-          label={t("deviceManagement.form.deviceType.label")}
-          name="deviceType"
-          value={formik.values.deviceType}
-          onChange={formik.handleChange}
-          error={formik.touched.deviceType && Boolean(formik.errors.deviceType)}
-          helperText={formik.touched.deviceType && formik.errors.deviceType}
-        >
-          {deviceTypes.map((deviceType) => (
-            <MenuItem key={deviceType} value={deviceType}>
-              {deviceType}
-            </MenuItem>
-          ))}
-        </TextField> */}
-        {/* <FormControl component="fieldset" margin="normal">
-          <FormControlLabel
-            name="disabled"
-            disabled={processing}
-            onChange={formik.handleChange}
-            checked={formik.values.disabled}
-            control={<Checkbox />}
-            label={t("deviceManagement.form.disabled.label")}
-          />
-        </FormControl> */}
         <Button 
           variant="contained" 
           type='submit'
@@ -562,6 +542,15 @@ const DeviceForm = ({
         > 
           {t("Submit")}
         </Button>
+        <LoadingButton
+          loading={loading}
+          type='submit'
+          variant="contained"
+          color="primary"
+          startIcon={loading && <CircularProgress size={20} color="inherit" />}
+          >
+          {t("Submit")}
+        </LoadingButton>
     </form>
   </Box>
   );
