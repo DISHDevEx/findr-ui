@@ -236,7 +236,8 @@ const DeviceForm = ({
     },
     validationSchema: Yup.object({
       deviceId: Yup.string()
-        .max(20, t("common.validations.max", { size: 20 }))
+        .max(31, t("common.validations.max", { size: 31 }))
+        .matches(/^[a-zA-Z].*$/, 'Must start with an alphabetic character')
         .required(t("common.validations.required")),
       source: Yup.string()
         .max(30, t("common.validations.max", { size: 30 }))
