@@ -91,17 +91,10 @@ const DeviceForm = ({
         }
         const responseData = await response;
         console.log('Response:', responseData);
-
-      } else {
-        alert('Error Response!');
-        const errorData = await response;
-        console.error('Error response:', errorData);
-        // Handle the error response here
       }
     } catch (error: any) {
-        const errorMessage = `Error!: ${error.response.data}`;
+        const errorMessage = `Error!: ${error.response.status} ${error.response.statusText}`;
         alert(errorMessage);
-      
     }
   };
   
