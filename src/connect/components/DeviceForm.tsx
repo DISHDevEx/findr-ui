@@ -533,12 +533,12 @@ const DeviceForm = ({
           onChange={formik.handleChange}
           />
         )}
-        <Button 
+        {/* <Button 
           variant="contained" 
           type='submit'
           endIcon={<PublishIcon />}
           //onClick={() => handleSubmit_async(formik.values)}
-        > 
+        >  */}
           {t("Submit")}
         </Button>
         <LoadingButton
@@ -547,6 +547,7 @@ const DeviceForm = ({
           variant="contained"
           color="primary"
           startIcon={loading && <CircularProgress size={20} color="inherit" />}
+          endIcon={<PublishIcon />}
           >
           {t("Submit")}
         </LoadingButton>
