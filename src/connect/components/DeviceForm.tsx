@@ -84,6 +84,7 @@ const DeviceForm = ({
       console.log("handling submit fetch");
       console.log(response);
       console.log('values:',JSON.stringify(values));
+
       if (response.ok) {
         if (response.status === 200) {
           alert('Successfully registered device!');
@@ -91,17 +92,16 @@ const DeviceForm = ({
         const responseData = await response;
         console.log('Response:', responseData);
 
-
       } else {
         alert('Error Response!');
         const errorData = await response;
         console.error('Error response:', errorData);
         // Handle the error response here
       }
-    } catch (error) {
-      alert('Other Error!');
-      console.error('Error:', error);
-      // Handle network errors or other exceptions here
+    } catch (error: any) {
+        const errorMessage = `Error!: ${error.response.data}`;
+        alert(errorMessage);
+      
     }
   };
   
