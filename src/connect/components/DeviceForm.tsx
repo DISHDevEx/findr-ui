@@ -1,5 +1,5 @@
 import Button from "@material-ui/core/Button";
-import LoadingButton from '@mui/lab/LoadingButton';
+import LoadingButton from "@material-ui/lab/LoadingButton";
 import Box from "@material-ui/core/Box";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
