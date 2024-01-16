@@ -57,7 +57,7 @@ const DeviceForm = ({
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const oracle_baseURL: string | undefined = process.env.REACT_APP_ORACLE_URL; //`http://3.95.191.132:30806/oracle`
-  const oracleURL: string = `'${oracle_baseURL}/oracle'`
+  const oracleURL: string = `${oracle_baseURL}/oracle`
 
   // const handleMock = (values: Partial<Device>) => {
   //   if (device && device.deviceId) {
