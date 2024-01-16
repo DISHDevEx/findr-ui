@@ -68,7 +68,7 @@ export const lightPalette = {
     main: "#00B0FF",
   },
   primary: {
-    main: "#9d2235",
+    main: "#f01446", //dish blaze
     contrastText: "#FFF",
   },
   secondary: {
