@@ -14,10 +14,8 @@ COPY package*.json yarn.lock tsconfig.json ./
 RUN yarn config set "strict-ssl" false -g
 
 # Install dependencies
-RUN yarn install --ignore-engines
+RUN yarn install
 RUN yarn cache clean
-
-#install curl commands in case needed to use inside container for testing
 RUN apk update
 RUN apk add curl
 
