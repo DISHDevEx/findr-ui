@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha",
   "description": "Free and open-source admin application made with React",
   "author": "DishDevEx <mss@gmail.com>",
-  "homepage": "https://DISHDevEx.github.io/findr",
+  "homepage": "https://DISHDevEx.github.io/findr-ui",
   "license": "MIT",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.14.0",
