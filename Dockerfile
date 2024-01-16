@@ -24,7 +24,6 @@ ENV PATH="/usr/local/bin:${PATH}"
 
 # Add oracle URL as environment variable
 ENV REACT_APP_ORACLE_URL $REACT_APP_ORACLE_URL
-ENV ORACLE_URL $ORACLE_URL
 
 # Print PATH and check if yarn is found
 RUN echo "Current PATH: $PATH"
