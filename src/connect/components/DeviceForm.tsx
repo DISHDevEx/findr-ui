@@ -23,8 +23,6 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import './mycomponent.css'; 
 import CircularProgress from '@mui/material/CircularProgress';
-
-
 const destinations = [
   { label: "deviceManagement.form.destination.options.s", value: "s3" },
   { label: "deviceManagement.form.destination.options.d", value: "dynamodb" },
@@ -35,7 +33,6 @@ const sources = [
   { label: "deviceManagement.form.source.options.h", value: "http" },
   { label: "deviceManagement.form.source.options.m", value: "mqtts" },
 ];
-
 type DeviceFormProps = {
   onAdd: (device: Partial<Device>) => void;
   onClose: () => void;
@@ -44,7 +41,6 @@ type DeviceFormProps = {
   processing: boolean;
   device?: Device;
 };
-
 
 const DeviceForm = ({
   onAdd,
@@ -56,8 +52,7 @@ const DeviceForm = ({
 }: DeviceFormProps) => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const oracle_baseURL: string | undefined = process.env.REACT_APP_ORACLE_URL; //`http://3.95.191.132:30806/oracle`
-  const oracleURL: string = `${oracle_baseURL}/oracle`
+  const oracleURL: string | undefined = process.env.REACT_APP_ORACLE_URL; //`http://3.95.191.132:30806/oracle`
 
   // const handleMock = (values: Partial<Device>) => {
   //   if (device && device.deviceId) {
@@ -72,8 +67,10 @@ const DeviceForm = ({
       if (!oracleURL) {
         console.error('Oracle URL is not defined!');
         return;}
+
       setLoading(true);
       console.log('Oracle URL:', oracleURL);
+
       const response = await fetch(oracleURL, {
         method: 'POST',
         headers: {
@@ -81,24 +78,19 @@ const DeviceForm = ({
         },
         body: JSON.stringify(values),
       });
+
       console.log("handling submit fetch");
       console.log('values:',JSON.stringify(values));
 
       if (response.ok) {
         if (response.status === 200) {
           alert('Successfully registered device!');
-          //handleMock
-          if (device && device.deviceId) {
-            onUpdate({ ...values, id: device.deviceId } as Device);
-          } else {
-            onAdd(values);
-          }
         }
         const responseData = await response;
         console.log('Response:', responseData);
       }
         else {
-          const errorMessage = `Error with response!: ${response.status} ${response.statusText}`;
+          const errorMessage = `Error! response: ${response.status} ${response.statusText}`;
           alert(errorMessage);
         }
     } catch (error: any) {
@@ -112,8 +104,6 @@ const DeviceForm = ({
   };
   
 
-
-  
     // const findrapi = axios.create({
     //   baseURL: "http://3.95.191.132:30806",
     //   headers: {'Content-Type': 'application/json'}
@@ -211,7 +201,6 @@ const DeviceForm = ({
   //     console.log('Error config:', error.config);
   //   }
   // };
-
 
 
   const formik = useFormik({
