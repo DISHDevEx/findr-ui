@@ -13,13 +13,11 @@ function generateId() {
   return (Math.floor(Math.random() * 10000) + 1).toString();
 }
 
-// const axiosMockInstance = axios.create();
-
 // This sets the mock adapter on the default instance
 export const mock = new MockAdapter(axios, { delayResponse: 10,  onNoMatch: "throwException" });
 
 // Activity
-// mock.restore();
+// mock.restore(); this will remove mocking behavior
 mock.onGet("/api/activity-logs").reply(200, activityLogs);
 
 // Auth
@@ -59,8 +57,8 @@ mock
   .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
 mock.onPut("/api/devices").reply(({ data }) => [200, data]);
 
-// Oracle
-mock
-  .onPost("http://3.95.191.132:30806/oracle")
-  .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
-mock.onPost("/oracle").reply(200);
+// // If wanting to use axios, instead of fetch. Set up mock for oracle endpoint
+// mock
+//   .onPost("http://3.95.191.132:30806/oracle")
+//   .reply(({ data }) => [201, { ...JSON.parse(data), id: generateId() }]);
+// mock.onPost("/oracle").reply(200);

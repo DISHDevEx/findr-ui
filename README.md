@@ -9,7 +9,8 @@ Based on React Material Admin which is a free and open-source admin application 
 ## Getting Started
 
 ```
-#Clone repo, navigate to root and run:
+#To develop and interact with locally: 
+1. Clone repo, navigate to root and run:
 rm -rf node_modules
 rm -rf package-lock.json
 yarn config set "strict-ssl" false -g
@@ -19,7 +20,13 @@ yarn run start
 
 ```
 
-This will automatically open [http://localhost:3000](http://localhost:3000).
+This will automatically open [http://localhost:7001](http://localhost:7001).
+
+```
+If the UI has been deployed with terraform on an EKS cluster, you may access the UI by using the node IP provided to you 
+OR you can port-forward the UI by using the command:
+kubectl port-forward <ui pod name>  -n ui 7001:7001
+```
 
 ## Features
 
@@ -27,8 +34,11 @@ This will automatically open [http://localhost:3000](http://localhost:3000).
 - Admin
   - Home
   - Dashboard
+  - Connect
+  - Manage
   - FAQ
   - Help Center
+  - Documentation
   - Profile Activity
   - Profile Information
   - Profile Password
@@ -42,7 +52,6 @@ This will automatically open [http://localhost:3000](http://localhost:3000).
   - Not Found
   - Under Construction
 - Landing
-- User Management
 ```
 
 ## Technologies
@@ -68,7 +77,3 @@ This will automatically open [http://localhost:3000](http://localhost:3000).
 | Validation            | Yup                                            | [Docs](https://github.com/jquense/yup)                                          |
 
 
-## License
-
-This project is licensed under the terms of the
-[MIT license](/LICENSE).
