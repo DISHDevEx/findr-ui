@@ -40,7 +40,7 @@ This will automatically open [http://localhost:3000](http://localhost:3000).
 - Core
   - Forbidden
   - Not Found
-  - Under Constructions
+  - Under Construction
 - Landing
 - User Management
 ```

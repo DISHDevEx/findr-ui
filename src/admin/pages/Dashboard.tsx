@@ -22,14 +22,14 @@ const overviewItems = [
     unit: "dashboard.overview.visits",
     value: "20 700",
   },
-  {
-    unit: "dashboard.overview.sales",
-    value: "$ 1 550",
-  },
-  {
-    unit: "dashboard.overview.orders",
-    value: "149",
-  },
+  // {
+  //   unit: "dashboard.overview.sales",
+  //   value: "$ 1 550",
+  // },
+  // {
+  //   unit: "dashboard.overview.orders",
+  //   value: "149",
+  // },
   {
     unit: "dashboard.overview.devices",
     value: "657",
@@ -56,11 +56,11 @@ const Dashboard = () => {
         <Grid item xs={12} md={4}>
           <BudgetWidget />
         </Grid>
-        <Grid item xs={12} md={4}>
+        {/* <Grid item xs={12} md={4}>
           <SalesHistoryWidget value={567} />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <ProgressWidget
+        </Grid> */}
+        {/* <Grid item xs={12} md={4}> */}
+          {/* <ProgressWidget
             avatar={<SupervisorAccountIcon />}
             mb={2}
             title={t("dashboard.visitProgress.title")}
@@ -76,21 +76,21 @@ const Dashboard = () => {
             avatar={<AttachMoneyIcon />}
             title={t("dashboard.salesProgress.title")}
             value={25}
-          />
-        </Grid>
+          /> */}
+        {/* </Grid>
         <Grid item xs={12} md={4}>
           <CircleProgressWidget
             height={204}
             title={t("dashboard.progress.title")}
             value={75}
           />
-        </Grid>
-        <Grid item xs={12} md={4}>
+        </Grid> */}
+        {/* <Grid item xs={12} md={4}>
           <DevicesWidget />
-        </Grid>
-        <Grid item xs={12} md={8}>
+        </Grid> */}
+        {/* <Grid item xs={12} md={8}>
           <TeamProgressWidget />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} md={4}>
           <SalesByCategoryWidget />
         </Grid>

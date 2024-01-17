@@ -58,8 +58,8 @@ export const menuItems = [
   },
   {
     icon: HubIcon,
-    key: "admin.drawer.menu.graphql",
-    path: "/admin/graphql",
+    key: "admin.drawer.menu.apollo",
+    path: "/admin/apollo",
   },
   {
     icon: VerifiedUserIcon,

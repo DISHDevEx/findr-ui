@@ -20,7 +20,7 @@ export const darkPalette = {
   contrastThreshold: 4.5,
   mode: "dark" as PaletteMode,
   error: {
-    main: "#f01446",
+    main: "#F01446",
   },
   info: {
     main: "#4FC3F7",
@@ -62,13 +62,13 @@ export const lightPalette = {
   contrastThreshold: 3,
   mode: "light" as PaletteMode,
   error: {
-    main: "#f01446", //dish blaze
+    main: "##F01446", //dish blaze
   },
   info: {
     main: "#00B0FF",
   },
   primary: {
-    main: "#f01446", //dish blaze
+    main: "#8d8d94", 
     contrastText: "#FFF",
   },
   secondary: {
@@ -78,7 +78,7 @@ export const lightPalette = {
     main: "#00E676",
   },
   warning: {
-    main: "#d41940",
+    main: "##F01446",
   },
   dish: {
     main: "#9d2235", //ember from dish palette
