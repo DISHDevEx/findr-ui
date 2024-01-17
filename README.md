@@ -22,6 +22,8 @@ yarn run start
 ```
 
 This will automatically open [http://localhost:7001](http://localhost:7001).
+You can find the landing page at http://localhost:7001/findr
+and the connect page at http://localhost:7001/findr/admin/connect
 
 
 If the UI has been deployed with terraform on an EKS cluster, you may access the UI by using the node IP provided to you 
