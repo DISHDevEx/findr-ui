@@ -1,5 +1,4 @@
 import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -7,7 +6,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import TextField from "@material-ui/core/TextField";
@@ -15,21 +13,21 @@ import LoadingButton from "@material-ui/lab/LoadingButton";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import React, { useState } from 'react';
 import { Device } from "../types/device";
 
-const destinations = [
-  { label: "deviceManagement.form.destination.options.s", value: "S3" },
-  { label: "deviceManagement.form.destination.options.d", value: "Dynamo DB" },
-  { label: "deviceManagement.form.destination.options.b", value: "Blob Store" },
-];
+// not currently in use- could change if using t instead of direct text
+// const destinations = [
+//   { label: "deviceManagement.form.destination.options.s", value: "S3" },
+//   { label: "deviceManagement.form.destination.options.d", value: "Dynamo DB" },
+//   { label: "deviceManagement.form.destination.options.b", value: "Blob Store" },
+// ];
 
-const sources = [
-  { label: "deviceManagement.form.source.options.h", value: "HTTP" },
-  { label: "deviceManagement.form.source.options.m", value: "MQTT" },
-];
+// const sources = [
+//   { label: "deviceManagement.form.source.options.h", value: "HTTP" },
+//   { label: "deviceManagement.form.source.options.m", value: "MQTT" },
+// ];
 
-const deviceTypes = ["Sensor", "Camera"];
+// const deviceTypes = ["Sensor", "Camera"];
 
 type DeviceDialogProps = {
   onAdd: (device: Partial<Device>) => void;
@@ -59,22 +57,17 @@ const DeviceDialog = ({
       onAdd(values);
     }
   };
-
+// could be updated to match device form exactly
   const formik = useFormik({
     initialValues: {
-      // disabled: device ? device.disabled : false,
-      //localFilePath: device ? device.localFilePath : "",
       deviceId: device ? device.deviceId : "",
       source: device ? device.source : "mqtts",
       destination: device ? device.destination : "s3",
-      // deviceTemplate: device ? device.deviceTemplate : "",
-      // deviceType: device ? device.deviceType : "",
       httpPortNumber: device ? device.httpPortNumber : "",
       httpRoute: device ? device.httpRoute : "",
       mqttsBroker: device ? device.mqttsBroker : "",
       topic: device ? device.topic : "",
       clientId: device ? device.clientId : "",
-      //caFilePath: device ? device.caFilePath : "",
       s3BucketName: device ? device.s3BucketName : "",
       s3Region: device ? device.s3Region : "",
       s3FileKey: device ? device.s3FileKey : "",

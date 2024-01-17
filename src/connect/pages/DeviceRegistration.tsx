@@ -3,8 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import React, { useState }from "react";
 import { useTranslation } from "react-i18next";
-import { NavLink, Outlet } from "react-router-dom";
-import { useAuth } from "../../auth/contexts/AuthProvider";
 import QueryWrapper from "../../core/components/QueryWrapper";
 import { useSnackbar } from "../../core/contexts/SnackbarProvider";
 import { useAddDevice } from "../hooks/useAddDevice";
@@ -13,7 +11,10 @@ import { useUpdateDevice } from "../hooks/useUpdateDevice";
 import { useDevices } from "../hooks/useDevices";
 import { Device } from "../types/device";
 import DeviceForm from "../components/DeviceForm";
-import Tooltip from '@mui/material/Tooltip';
+// if connecting to device table which is mocked
+import { NavLink, Outlet } from "react-router-dom";
+// import { useAuth } from "../../auth/contexts/AuthProvider";
+// import Tooltip from '@mui/material/Tooltip';
 
 const DeviceRegistration = () => {
   const snackbar = useSnackbar();
@@ -47,18 +48,18 @@ const DeviceRegistration = () => {
       });
   };
 
-  const handleDeleteDevices = async () => {
-    deleteDevices(deviceDeleted)
-      .then(() => {
-        snackbar.success(t("DeviceManagement.notifications.deleteSuccess"));
-        setSelected([]);
-        setDeviceDeleted([]);
-        setOpenConfirmDeleteDialog(false);
-      })
-      .catch(() => {
-        snackbar.error(t("common.errors.unexpected.subTitle"));
-      });
-  };
+  // const handleDeleteDevices = async () => {
+  //   deleteDevices(deviceDeleted)
+  //     .then(() => {
+  //       snackbar.success(t("DeviceManagement.notifications.deleteSuccess"));
+  //       setSelected([]);
+  //       setDeviceDeleted([]);
+  //       setOpenConfirmDeleteDialog(false);
+  //     })
+  //     .catch(() => {
+  //       snackbar.error(t("common.errors.unexpected.subTitle"));
+  //     });
+  // };
 
   const handleUpdateDevice = async (device: Device) => {
     updateDevice(device)
@@ -75,32 +76,32 @@ const DeviceRegistration = () => {
       });
   };
 
-  const handleCancelSelected = () => {
-    setSelected([]);
-  };
+  // const handleCancelSelected = () => {
+  //   setSelected([]);
+  // };
 
-  const handleCloseConfirmDeleteDialog = () => {
-    setOpenConfirmDeleteDialog(false);
-  };
+  // const handleCloseConfirmDeleteDialog = () => {
+  //   setOpenConfirmDeleteDialog(false);
+  // };
 
   const handleCloseDeviceDialog = () => {
     setDeviceUpdated(undefined);
     setOpenDeviceDialog(false);
   };
 
-  const handleOpenConfirmDeleteDialog = (deviceIds: string[]) => {
-    setDeviceDeleted(deviceIds);
-    setOpenConfirmDeleteDialog(true);
-  };
+  // const handleOpenConfirmDeleteDialog = (deviceIds: string[]) => {
+  //   setDeviceDeleted(deviceIds);
+  //   setOpenConfirmDeleteDialog(true);
+  // };
 
-  const handleOpenDeviceDialog = (device?: Device) => {
-    setDeviceUpdated(device);
-    setOpenDeviceDialog(true);
-  };
+  // const handleOpenDeviceDialog = (device?: Device) => {
+  //   setDeviceUpdated(device);
+  //   setOpenDeviceDialog(true);
+  // };
 
-  const handleSelectedChange = (newSelected: string[]) => {
-    setSelected(newSelected);
-  };
+  // const handleSelectedChange = (newSelected: string[]) => {
+  //   setSelected(newSelected);
+  // };
 
   return (
     <React.Fragment>

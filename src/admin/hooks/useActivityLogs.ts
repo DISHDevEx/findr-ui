@@ -1,5 +1,4 @@
 import axios from "axios";
-import { mock } from "../../mocks/server";
 import { useQuery } from "react-query";
 import { ActivityLog } from "../types/activityLog";
 

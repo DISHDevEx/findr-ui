@@ -3,8 +3,9 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../auth/contexts/AuthProvider";
-import { ReactComponent as WelcomeSvg } from "../../core/assets/welcome.svg";
-import SvgContainer from "../../core/components/SvgContainer";
+// include if you want to create and place a svg in the welcome widget
+// import { ReactComponent as WelcomeSvg } from "../../core/assets/welcome.svg";
+// import SvgContainer from "../../core/components/SvgContainer";
 
 const WelcomeWidget = () => {
   const { userInfo } = useAuth();

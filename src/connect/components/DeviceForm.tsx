@@ -1,10 +1,7 @@
-import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import Box from "@material-ui/core/Box";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import { makeStyles } from '@material-ui/styles';
-import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
@@ -17,22 +14,15 @@ import { ReactComponent as S3Svg } from "../assets/aws_s3_md.svg";
 import { ReactComponent as DynamoSvg } from "../assets/dynamo_db_md.svg";
 import { ReactComponent as MqttSvg } from "../assets/mqtt_md.svg";
 import { ReactComponent as HttpSvg } from "../assets/http_md.svg";
-import { mock } from "../../mocks/server";
 import Typography from '@mui/material/Typography';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import './mycomponent.css'; 
 import CircularProgress from '@mui/material/CircularProgress';
-const destinations = [
-  { label: "deviceManagement.form.destination.options.s", value: "s3" },
-  { label: "deviceManagement.form.destination.options.d", value: "dynamodb" },
-  { label: "deviceManagement.form.destination.options.b", value: "Blob Store" },
-];
+// if using axios for oracle, then import
+// import { mock } from "../../mocks/server";
 
-const sources = [
-  { label: "deviceManagement.form.source.options.h", value: "http" },
-  { label: "deviceManagement.form.source.options.m", value: "mqtts" },
-];
+
 type DeviceFormProps = {
   onAdd: (device: Partial<Device>) => void;
   onClose: () => void;

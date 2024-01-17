@@ -1,5 +1,4 @@
 import Avatar from "@material-ui/core/Avatar";
-import Badge from "@material-ui/core/Badge";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,7 +8,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import HelpIcon from "@material-ui/icons/Help";
 import MailIcon from "@material-ui/icons/Mail";
-import SchoolIcon from "@material-ui/icons/School";
 import SupportIcon from "@material-ui/icons/Support";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -18,6 +16,9 @@ import { ReactComponent as HelpSvg } from "../../core/assets/help.svg";
 import SvgContainer from "../../core/components/SvgContainer";
 import AdminAppBar from "../components/AdminAppBar";
 import AdminToolbar from "../components/AdminToolbar";
+//import if you want the card that links to a guide
+// import Badge from "@material-ui/core/Badge";
+// import SchoolIcon from "@material-ui/icons/School";
 
 const HelpCenter = () => {
   const { t } = useTranslation();

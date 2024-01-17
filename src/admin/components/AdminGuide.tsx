@@ -4,10 +4,10 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../auth/contexts/AuthProvider";
-import LooksOneIcon from '@mui/icons-material/LooksOne';
 
 const AdminGuide = () => {
-  const { userInfo } = useAuth();
+  // include if you want a custom message for the user
+  // const { userInfo } = useAuth();
   const { t } = useTranslation();
 
   return (
