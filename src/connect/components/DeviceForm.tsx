@@ -268,7 +268,7 @@ const DeviceForm = ({
           required
           fullWidth
           id="certificate"
-          label="certificate"
+          label="Certificate"
           name="certificate"
           //autoComplete="given-name"
           disabled={processing}
