@@ -8,9 +8,10 @@ Based on React Material Admin which is a free and open-source admin application 
 
 ## Getting Started
 
-```
+
 #To develop and interact with locally: 
 1. Clone repo, navigate to root and run:
+```
 rm -rf node_modules
 rm -rf package-lock.json
 yarn config set "strict-ssl" false -g
@@ -22,9 +23,10 @@ yarn run start
 
 This will automatically open [http://localhost:7001](http://localhost:7001).
 
-```
+
 If the UI has been deployed with terraform on an EKS cluster, you may access the UI by using the node IP provided to you 
 OR you can port-forward the UI by using the command:
+```
 kubectl port-forward <ui pod name>  -n ui 7001:7001
 ```
 
