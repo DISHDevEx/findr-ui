@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "../../auth/contexts/AuthProvider";
+// import { useAuth } from "../../auth/contexts/AuthProvider";
 
 const AdminGuide = () => {
   // include if you want a custom message for the user

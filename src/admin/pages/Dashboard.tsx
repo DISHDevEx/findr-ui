@@ -1,21 +1,22 @@
 import Grid from "@material-ui/core/Grid";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import AdminAppBar from "../components/AdminAppBar";
 import AdminToolbar from "../components/AdminToolbar";
 import ActivityWidget from "../widgets/ActivityWidget";
 import BudgetWidget from "../widgets/BudgetWidget";
-import CircleProgressWidget from "../widgets/CircleProgressWidget";
 import OverviewWidget from "../widgets/OverviewWidget";
-import ProgressWidget from "../widgets/ProgressWidget";
 import SalesByAgeWidget from "../widgets/SalesByAgeWidget";
 import SalesByCategoryWidget from "../widgets/SalesByCategoryWidget";
-import SalesHistoryWidget from "../widgets/SalesHistoryWidget";
-import TeamProgressWidget from "../widgets/TeamProgressWidget";
-import DevicesWidget from "../widgets/DevicesWidget";
+// removed widgets
+// import SalesHistoryWidget from "../widgets/SalesHistoryWidget";
+// import TeamProgressWidget from "../widgets/TeamProgressWidget";
+// import DevicesWidget from "../widgets/DevicesWidget";
+// import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+// import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+// import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+// import CircleProgressWidget from "../widgets/CircleProgressWidget";
+// import ProgressWidget from "../widgets/ProgressWidget";
 
 const overviewItems = [
   {

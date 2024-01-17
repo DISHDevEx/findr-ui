@@ -34,7 +34,6 @@ const HelpCenter = () => {
         </SvgContainer>
       </Container>
       <Grid
-      container
       container spacing={4} 
       sx={{ mt: 3 }} 
       alignItems="center"
