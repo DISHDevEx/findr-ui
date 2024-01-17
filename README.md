@@ -9,7 +9,7 @@ Based on React Material Admin which is a free and open-source admin application 
 ## Getting Started
 
 
-#To develop and interact with locally: 
+To develop and interact with locally: 
 1. Clone repo, navigate to root and run:
 ```
 rm -rf node_modules
