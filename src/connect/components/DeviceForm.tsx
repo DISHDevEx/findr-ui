@@ -60,6 +60,8 @@ const DeviceForm = ({
 
       setLoading(true);
       console.log('Oracle URL:', oracleURL);
+      console.log("handling submit fetch");
+      console.log('values:', JSON.stringify(values));
 
       const response = await fetch(oracleURL, {
         method: 'POST',
@@ -68,9 +70,6 @@ const DeviceForm = ({
         },
         body: JSON.stringify(values),
       });
-
-      console.log("handling submit fetch");
-      console.log('values:',JSON.stringify(values));
 
       if (response.ok) {
         if (response.status === 200) {
