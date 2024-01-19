@@ -11,6 +11,9 @@ import { useUpdateDevice } from "../hooks/useUpdateDevice";
 import { useDevices } from "../hooks/useDevices";
 import { Device } from "../types/device";
 import DeviceForm from "../components/DeviceForm";
+import AdminAppBar from "../../admin/components/AdminAppBar.tsx";
+import AdminToolbar from "../../admin/components/AdminToolbar.tsx";
+
 // if connecting to device table which is mocked
 import { NavLink, Outlet } from "react-router-dom";
 // import { useAuth } from "../../auth/contexts/AuthProvider";
@@ -105,25 +108,28 @@ const DeviceRegistration = () => {
 
   return (
     <React.Fragment>
-      <Typography
-              component="div"
-              variant="h2"
-            >{`Connect`}</Typography>
-        <Grid item xs={12} md={12} marginTop={3}>
-          <Box sx={{ mb: 4 }}>
-            <DeviceForm
-            onAdd={handleAddDevice}
-            onClose={handleCloseDeviceDialog}
-            onUpdate={handleUpdateDevice}
-            open={openDeviceDialog}
-            processing={processing}
-            device={deviceUpdated}
-            />
-          </Box>
-          <QueryWrapper>
-            <Outlet />
-          </QueryWrapper>
-        </Grid>
+      <AdminAppBar>
+        <AdminToolbar />
+      </AdminAppBar>
+        <Typography
+                component="div"
+                variant="h2"
+              >{`Connect`}</Typography>
+          <Grid item xs={12} md={12} marginTop={3}>
+            <Box sx={{ mb: 4 }}>
+              <DeviceForm
+              onAdd={handleAddDevice}
+              onClose={handleCloseDeviceDialog}
+              onUpdate={handleUpdateDevice}
+              open={openDeviceDialog}
+              processing={processing}
+              device={deviceUpdated}
+              />
+            </Box>
+            <QueryWrapper>
+              <Outlet />
+            </QueryWrapper>
+          </Grid>
     </React.Fragment>
   );
 };
