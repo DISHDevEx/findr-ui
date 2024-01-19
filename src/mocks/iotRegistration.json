@@ -1,0 +1,19 @@
+{
+  "deviceId": "raspberrypi",
+  "destination": "s3",
+  "source": "mqtts",
+  "mqttsBroker": "mqtts://10.5.131.138:8883",
+  "topic": "test",
+  "clientId": "test8883",
+  "httpPortNumber": 3000,
+  "httpRoute": "/iot-data",
+  "httpIp": "7000",
+  "httpResponseKey": "key",
+  "httpRequestInterval": "10",
+  "s3BucketName": "mqtt-save",
+  "s3Region": "us-east-1",
+  "s3FileKey": "up/protocol-mqtt-test-uploaded-file.txt",
+  "dynamodbTableName": "findr-dynamodb",
+  "dynamodbRegion": "us-east-1",
+  "certificate": "fakecert"
+}
